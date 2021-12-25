@@ -19,6 +19,16 @@ local function findwater(pos)
 	return nodecore.find_nodes_around(pos, "group:water")
 end
 
+local function soakup(pos)
+	local any
+	for _, p in pairs(findwater(pos)) do
+		nodecore.node_sound(p, "dig")
+		minetest.remove_node(p)
+		any = true
+	end
+	return any
+end
+
 -- ================================================================== --
 
 minetest.register_node(modname .. ":muck", {
@@ -28,7 +38,8 @@ minetest.register_node(modname .. ":muck", {
 			mud = 1,
 			moist = 1,
 			crumbly = 1,
-			falling_repose = 1
+			falling_repose = 1,
+			slippery = 6
 		},
 		sounds = nodecore.sounds("nc_terrain_chompy")
 	})
@@ -60,9 +71,9 @@ nodecore.register_craft({
 	})
 
 nodecore.register_aism({
-		label = "sponge stack sun dry",
+		label = "muck stack sun dry",
 		interval = 1,
-		chance = 100,
+		chance = 40,
 		itemnames = {modname .. ":muck"},
 		action = function(stack, data)
 			if data.player and (data.list ~= "main"
@@ -80,13 +91,13 @@ nodecore.register_aism({
 	})
 
 minetest.register_abm({
-		label = "sponge fire dry",
+		label = "muck fire dry",
 		interval = 1,
 		chance = 20,
 		nodenames = {modname .. ":muck"},
 		neighbors = {"group:igniter"},
 		action = function(pos)
 			nodecore.sound_play("nc_api_craft_hiss", {gain = 0.02, pos = pos})
-			return minetest.set_node(pos, {name = "nc_terrain:dirt"})
+			return minetest.set_node(pos, {name = muckdry})
 		end
 	})

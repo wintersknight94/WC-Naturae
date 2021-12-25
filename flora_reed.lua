@@ -30,7 +30,7 @@ minetest.register_node(reedname, reeddef)
 minetest.register_decoration({
 		label = {modname .. ":reeds"},
 		deco_type = "simple",
-		place_on = {"group:soil", "nc_terrain:sand"},
+		place_on = {"group:soil", "group:mud", "nc_terrain:sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = -0.3,
@@ -50,7 +50,7 @@ minetest.register_decoration({
 minetest.register_decoration({
 		label = {modname .. ":reeds"},
 		deco_type = "simple",
-		place_on = {"nc_terrain:dirt_with_grass", "nc_terrain:dirt", "nc_terrain:sand"},
+		place_on = {"group:mud", "nc_terrain:dirt_with_grass", "nc_terrain:dirt", "nc_terrain:sand"},
 		sidelen = 16,
 		fill_ratio = 0.1,
 		y_max = 2,
