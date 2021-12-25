@@ -51,12 +51,11 @@ local function register_shroom(suff, desc, light_source,
 			decoration = modname .. ":mushroom" .. suff,
 		})
 end
-register_shroom("", "Mushroom", nil,
-	0.1, 80, -0.42, 0.07, 42,
-	{"group:soil", "group:log"}, {"grassland", "forest", "old_forest"})
-register_shroom("_glow", "Glowing Mushroom", 2,
-	-400, 0.1, 0.11, 0.2, 94,
-	{"group:soil", "group:log", "group:crumbly", "group:cobble"}, {""})
-register_shroom("_lux", "Luxaeterna", 4,
-	-1000, -100, 0.72, 0.1, 69,
-	{"group:soil", "group:crumbly", "group:cobble"}, {""})
+
+---------------suff,	desc,	light_source,   ymin, 	ymax,	offset, 	scale, 	seed,	 place, 			biome-----
+
+register_shroom("", 	"Mushroom",		nil,	 -10, 	80, 		-0.01, 	0.1, 	42, 	{"group:soil", "group:log"}, {"floodland", "thicket", "forest", "old_forest", "ancient_forest"})
+	
+register_shroom("_glow",	"Glowing Mushroom",	2, 	-400, 	1, 		-0.01, 	0.1, 	94, 	{"group:soil", "group:log", "group:crumbly", "group:cobble"}, {""})
+	
+register_shroom("_lux",	"Luxaeterna",		4, 	-1000,   -100, 	0.72, 	0.1, 	69, 	{"group:soil", "group:crumbly", "group:cobble"}, {""})
