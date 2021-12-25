@@ -3,6 +3,10 @@ local minetest
     = minetest
 -- LUALOCALS > ---------------------------------------------------------
 
+local modname = minetest.get_current_modname()
+
+-- ================================================================== --
+
 minetest.register_biome({
 		name = "grassland",
 		node_top = "nc_terrain:dirt_with_grass",
@@ -21,13 +25,13 @@ minetest.register_biome({
 
 minetest.register_biome({
 		name = "floodland",
-		node_top = "nc_terrain:dirt",
+		node_top = modname .. ":muck",
 		depth_top = 1,
 		node_filler = "nc_terrain:dirt",
 		depth_filler = 2,
 		node_riverbed = "nc_terrain:sand",
 		depth_riverbed = 4,
-		y_min = 0,
+		y_min = -2,
 		y_max = 2,
 		vertical_blend = 2,
 		horizontal_blend = 16,

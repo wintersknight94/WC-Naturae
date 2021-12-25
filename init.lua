@@ -3,6 +3,7 @@ local include
     = include
 -- LUALOCALS > ---------------------------------------------------------
 
+include("feature_muck")
 include("feature_biomes")
 include("feature_dungeon")
 include("feature_spread")

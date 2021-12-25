@@ -64,7 +64,7 @@ minetest.register_decoration({
 		place_on = {"group:soil"},
 		sidelen = 16,
 		fill_ratio = 0.005,
---		biomes = {"forest", "thicket", "old_forest", "ancient_forest"},
+		biomes = {"forest", "thicket", "old_forest", "ancient_forest"},
 		y_min = -2,
 		y_max = 1000,
 		schematic = nodecore.deadwood_schematic,

@@ -76,7 +76,7 @@ nodecore.register_aism({
 minetest.register_decoration({
 		label = modname .. ":bamboo_living",
 		deco_type = "simple",
-		place_on = {"group:soil", "nc_terrain:sand"},
+		place_on = {"group:soil", "nc_terrain:sand", "group:mud"},
 		sidelen = 16,
 		fill_ratio = 0.1,
 		y_max = 200,
