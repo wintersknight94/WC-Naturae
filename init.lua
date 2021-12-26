@@ -3,8 +3,11 @@ local include
     = include
 -- LUALOCALS > ---------------------------------------------------------
 
-include("item_mycelium")
-include("item_muck")
+include("conversion")
+
+include("substrate_mycelium")
+include("substrate_muck")
+
 include("item_fiber")
 include("item_thatch")
 

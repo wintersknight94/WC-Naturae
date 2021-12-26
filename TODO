@@ -17,7 +17,6 @@
 	- Alter recipes to no longer use plant fibers
 	- Add more unique plant material
 	- Remove 'plant fibers' generic item
-- Mycelium
 - Merge nc_pebbles in wc_naturae
 - Create alias file
 	- nc_nature
