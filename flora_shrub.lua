@@ -50,7 +50,7 @@ minetest.register_decoration({
 		place_on = {"group:soil"},
 		sidelen = 16,
 		fill_ratio = 0.01,
-		biomes = {"unknown", "forest", "thicket"},
+		biomes = {"unknown", "grassland", "forest", "thicket"},
 		y_max = 200,
 		y_min = -20,
 		decoration = {modname .. ":shrub"},
@@ -68,14 +68,29 @@ minetest.register_abm({
 	})
 
 nodecore.register_craft({
-		label = "break shrub into fibers",
+		label = "break shrub into sticks",
 		action = "pummel",
-		toolgroups = {choppy = 2},
+		duration = 3,
+		toolgroups = {thumpy = 1},
 		nodes = {
 			{match = modname .. ":shrub_loose", replace = "air"}
 		},
 		items = {
-			{name = modname .. ":plant_fibers", count = 4, scatter = 3}
+			{name = "nc_tree:stick", count = 4, scatter = 3}
 		},
 		itemscatter = 3
 	})
+
+nodecore.register_craft({
+		label = "compress peat from shrubs",
+		action = "pummel",
+		toolgroups = {crumbly = 2},
+		indexkeys = {modname .. ":shrub_loose"},
+		nodes = {
+			{
+				match = {name = modname .. ":shrub_loose", count = 8},
+				replace = "nc_tree:peat"
+			}
+		}
+	})
+

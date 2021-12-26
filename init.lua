@@ -3,13 +3,14 @@ local include
     = include
 -- LUALOCALS > ---------------------------------------------------------
 
-include("feature_muck")
+include("item_mycelium")
+include("item_muck")
+include("item_fiber")
+include("item_thatch")
+
 include("feature_biomes")
 include("feature_dungeon")
 include("feature_spread")
-
-include("item_fiber")
-include("item_thatch")
 
 include("decor_boulder")
 include("decor_decaylog")

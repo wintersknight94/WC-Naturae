@@ -12,6 +12,15 @@
 	- Tweak things (probabilities, speeds, etc)
 - Shrub stems
 	- Replace dirt/grass below with a plantlike_rooted
-	- Maybe a source of sticks?
-
+- Plant Fibers
+	- Alias existing plant fibers to sedge
+	- Alter recipes to no longer use plant fibers
+	- Add more unique plant material
+	- Remove 'plant fibers' generic item
+- Mycelium
+- Merge nc_pebbles in wc_naturae
+- Create alias file
+	- nc_nature
+	- nc_pebbles
+- Vanillize textures
 ------------------------------------------------------------------------

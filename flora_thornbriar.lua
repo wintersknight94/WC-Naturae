@@ -22,25 +22,41 @@ minetest.register_node(modname .. ":thornbriar", {
 			flora = 1,
 			flammable = 2,
 			attached_node = 1,
-			[modname .. "_spread"] = 1
+			damage_touch = 1,
+			[modname .. "_spread"] = 1,
 		},
-		drop = modname .. ":plant_fibers",
+		drop = "nc_tree:stick",
 		sounds = nodecore.sounds("nc_terrain_swishy"),
 		selection_box = {
 			type = "fixed",
-			fixed = {-6/16, -0.5, -6/16, 6/16, 4/16, 6/16},
+			fixed = {-6/16, -0.5, -6/16, 6/16, 4/16, 6/16}
 		},
 	})
 
 minetest.register_decoration({
 		label = {modname .. ":thornbriar"},
 		deco_type = "simple",
-		place_on = {"group:soil"},
+		place_on = {"group:soil","group:mud"},
 		sidelen = 16,
 		fill_ratio = 0.4,
 		biomes = {"thicket"},
 		y_max = 200,
-		y_min = -20,
+		y_min = -40,
 		height = 1,
 		decoration = {modname .. ":thornbriar"},
 	})
+	
+minetest.register_decoration({
+		label = {modname .. ":thornbriar"},
+		deco_type = "simple",
+		place_on = {"group:sand"},
+		sidelen = 4,
+		fill_ratio = 0.001,
+		biomes = {"dune"},
+		y_max = 200,
+		y_min = -40,
+		height = 1,
+		decoration = {modname .. ":thornbriar"},
+	})
+
+
