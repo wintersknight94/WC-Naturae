@@ -1,3 +1,4 @@
+SOON TO BE FULLY BACKWARDS-COMPATIBLE!!
 Expect more features soon!
 
 This is an updated and revised version of the original NodeCore Nature mod,
