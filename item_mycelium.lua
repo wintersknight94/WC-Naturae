@@ -104,7 +104,7 @@ nodecore.register_soaking_abm({
 		soakcheck = function(data, pos)
 			if data.total < compostcost then return end
 			minetest.get_meta(pos):from_table({})
-			if math_random(1, 100) == 1 and nodecore.is_full_sun(
+			if math_random(1, 4) == 1 and nodecore.is_full_sun(
 				{x = pos.x, y = pos.y + 1, z = pos.z}) then
 				nodecore.set_loud(pos, {name = modname .. ":mossy_dirt"})
 				return
@@ -121,33 +121,63 @@ nodecore.register_soaking_abm({
 
 -- ================================================================== --
 
--- Mushroom Growth
+-- Shroom Growth Mycelium
 minetest.register_abm({
-		label = "Mushroom Growth",
-		nodenames = {modname .. ":mycelium"},
---		neighbors = {"group:moist"},
-		interval = 5, --50
-		chance = 2, --10
-		action = function(pos)
-			if nodecore.buildable_to({x = pos.x, y = pos.y + 1, z = pos.z}) then
-				nodecore.set_loud({x = pos.x, y = pos.y + 1, z = pos.z}, {name = modname .. ":mushroom"})
-				return
-			end
+	label = "Shroom Growth",
+	nodenames = {modname .. ":mycelium"},
+	interval = 50, --50
+	chance = 10, --10
+	action = function(pos)
+		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
+--		minetest.chat_send_all("action works")
+		if not nodecore.buildable_to(above) then
+--			minetest.chat_send_all("blocked above")
+			return
 		end
-	})
+		local light = nodecore.get_node_light(above)
+		if (not light) or light >= 8 then
+--			minetest.chat_send_all("wrong light")
+			return
+		end
+		if light >= 4 then
+			return nodecore.set_loud(above, {name = modname .. ":mushroom"})
+		end
+		if #nodecore.find_nodes_around(pos, "group:lux_emit", 2) > 0 then
+			return nodecore.set_loud(above, {name = modname .. ":mushroom_lux"})
+		end
+		return nodecore.set_loud(above, {name = modname .. ":mushroom_glow"})
+	end
+})
 
--- Glowshroom Growth
+-- Mushroom Growth Humus
 minetest.register_abm({
-		label = "Glowshroom Growth",
-		nodenames = {modname .. ":mycelium"},
---		neighbors = {"group:moist"},
-		interval = 5, --50
-		chance = 2, --10
-		action = function(pos)
-			if nodecore.buildable_to({x = pos.x, y = pos.y + 1, z = pos.z})
-			and nodecore.get_node_light(pos) < 8 then
-				nodecore.set_loud({x = pos.x, y = pos.y + 1, z = pos.z}, {name = modname .. ":mushroom_glow"})
-				return
-			end
+	label = "Mushroom Growth",
+	nodenames = {"nc_tree:humus"},
+	neighbors = {"group:moist"},
+	interval = 100,
+	chance = 100,
+	action = function(pos)
+		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
+--		minetest.chat_send_all("action works")
+		if not nodecore.buildable_to(above) then
+--			minetest.chat_send_all("blocked above")
+			return
 		end
-	})
+		local light = nodecore.get_node_light(above)
+		if (not light) or light >= 6 then
+--			minetest.chat_send_all("wrong light")
+			return
+		end
+		return nodecore.set_loud(above, {name = modname .. ":mushroom"})
+	end
+})
+
+--minetest.register_abm({
+--	label = "mushstone",
+--	nodenames = {"nc_terrain:stone"},
+--	interval = 1, --50
+--	chance = 1, --10
+--	action = function(pos)
+--		nodecore.set_loud(pos, {name = modname .. ":mycelium"})
+--	end
+--})
