@@ -8,7 +8,8 @@ Based on [NodeCore Nature: Revised by Warr1024], which in turn is based on
 the original [NodeCore Nature by Winter94](/packages/Winter94/nc_nature/)
 
 This mod is intended as a drop-in replacement for the original Nature mod
-for existing worlds.  This mod may make lasting changes to your world as
+and Warr1024's 'NodeCore Nature: Revised' mod for existing worlds.
+This mod may make lasting changes to your world as
 mapblocks are loaded or new content is accessed.  Make sure you
 **back up your world** before upgrading.
 
@@ -36,4 +37,4 @@ All features from WintersKnight's original NodeCore Nature mod, plus...
 - Dungeons improved
 	- Merge with vanilla complex dungeons with bricks/concrete/loot
 - Plant fibers more distinguishable from vanilla rushes
-
+- Muck, Mycelium, and More!
