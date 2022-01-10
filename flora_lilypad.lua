@@ -19,7 +19,7 @@ minetest.register_node(modname .. ":lilypad", {
 		liquids_pointable = true,
 		walkable = false,
 		floodable = true,
-		silktouch = false,
+--		silktouch = false,
 		groups = {snappy = 1, flora = 1, flammable = 3},
 		sounds = nodecore.sounds("nc_terrain_swishy"),
 		node_placement_prediction = "",
@@ -31,7 +31,7 @@ minetest.register_node(modname .. ":lilypad", {
 			type = "fixed",
 			fixed = {-7/16, -0.5, -7/16, 7/16, -15/32, 7/16}
 		},
-		drop = modname .. ":plant_fibers"
+--		drop = modname .. ":plant_fibers"
 	})
 
 minetest.register_decoration({

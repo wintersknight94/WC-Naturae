@@ -22,7 +22,7 @@ local function register_shroom(suff, desc, light_source,
 				fungi = 2,
 				flammable = 1,
 				attached_node = 1,
-				decay_to_fibers = 1,
+--				decay_to_fibers = 1,
 				[modname .. "_spread"] = 1
 			},
 			sounds = nodecore.sounds("nc_terrain_swishy"),

@@ -21,7 +21,7 @@ minetest.register_node(modname .. ":starflower", {
 			flora = 1,
 			flammable = 1,
 			attached_node = 1,
-			decay_to_fibers = 1,
+--			decay_to_fibers = 1,
 			[modname .. "_spread"] = 1
 		},
 		sounds = nodecore.sounds("nc_terrain_swishy"),

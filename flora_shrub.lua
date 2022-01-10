@@ -35,7 +35,7 @@ minetest.register_node(modname .. ":shrub", {
 				green = 1,
 				stack_as_node = 1,
 				shrub = 1,
-				decay_to_fibers = 1,
+--				decay_to_fibers = 1,
 				[modname .. "_spread"] = 0
 			}
 		},
