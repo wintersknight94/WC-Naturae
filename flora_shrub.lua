@@ -88,7 +88,7 @@ nodecore.register_craft({
 		indexkeys = {modname .. ":shrub_loose"},
 		nodes = {
 			{
-				match = {name = modname .. ":shrub_loose", count = 8},
+				match = {name = modname .. ":shrub_loose", count = 4},
 				replace = "nc_tree:peat"
 			}
 		}

@@ -22,7 +22,7 @@ minetest.register_node(modname .. ":bamboo_pole", {
 		description = "Bamboo",
 		drawtype = "nodebox",
 		node_box = bamboo_nodebox,
-		tiles = {modname .. "_bamboo.png^[colorize:peru:100"},
+		tiles = {modname .. "_bamboo_dead.png"},
 		paramtype = "light",
 		paramtype2 = "facedir",
 		sunlight_propagates = true,
