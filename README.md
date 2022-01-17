@@ -37,5 +37,5 @@ All features from WintersKnight's original NodeCore Nature mod, plus...
   	- More mossable nodes, extensible API
 - Dungeons improved
 	- Merge with vanilla complex dungeons with bricks/concrete/loot
-- Plant fibers more distinguishable from vanilla rushes
+- Plant fibers have now been deprecated. Look forward to more complex life cycles in the future!
 - Muck, Mycelium, and More!
