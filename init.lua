@@ -3,8 +3,6 @@ local include
     = include
 -- LUALOCALS > ---------------------------------------------------------
 
-include("conversion")
-
 include("substrate_mycelium")
 include("substrate_muck")
 
@@ -16,6 +14,9 @@ include("feature_biomes")
 include("feature_dungeon")
 include("feature_spread")
 
+include("decor_pebbles")
+include("decor_shells")
+include("decor_pearls")
 include("decor_boulder")
 include("decor_decaylog")
 include("decor_tree_antique")
@@ -33,3 +34,10 @@ include("flora_reed")
 include("flora_shrub")
 include("flora_starflower")
 include("flora_thornbriar")
+
+include("craft_adjust")
+include("adze_glass")
+include("adze_shell")
+include("postgen")
+
+include("conversion")
