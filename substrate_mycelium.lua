@@ -23,7 +23,6 @@ minetest.register_node(modname .. ":mycelium", {
 		},
 		alternate_loose = {
 			tiles = {"(nc_terrain_dirt.png^"..modname.."_mycelium.png)^nc_api_loose.png"},
-			walkable = false,
 			groups = {
 				crumbly = 1,
 				soil = 5,
