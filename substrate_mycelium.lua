@@ -18,7 +18,8 @@ minetest.register_node(modname .. ":mycelium", {
 			soil = 4,
 			fungal = 1,
 			humus = 1,
-			grassable = 1
+			grassable = 1,
+			moist = 1
 		},
 		alternate_loose = {
 			tiles = {"(nc_terrain_dirt.png^"..modname.."_mycelium.png)^nc_api_loose.png"},
@@ -123,7 +124,8 @@ nodecore.register_soaking_abm({
 -- Shroom Growth Mycelium
 minetest.register_abm({
 	label = "Shroom Growth",
-	nodenames = {modname .. ":mycelium"},
+	nodenames = {group = fungal},
+--	nodenames = {modname .. ":mycelium"},
 	interval = 40, --50
 	chance = 12, --10
 	action = function(pos)

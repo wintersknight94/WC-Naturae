@@ -54,7 +54,7 @@ minetest.register_biome({
 		heat_point = 100,
 		humidity_point = 100,
 	})
-
+	
 minetest.register_biome({
 		name = "forest",
 		node_top = "nc_terrain:dirt_with_grass",
@@ -118,3 +118,5 @@ minetest.register_biome({
 		heat_point = 100,
 		humidity_point = 0,
 	})
+	
+

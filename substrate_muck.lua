@@ -104,23 +104,4 @@ minetest.register_abm({
 		end
 	})
 	
-minetest.register_ore({
-		ore_type = "blob",
-		ore  = modname.. ":muck",
-		wherein = {"nc_terrain:dirt_with_grass", "nc_terrain:dirt", "nc_terrain:sand", "nc_terrain:gravel"},
-		biomes = {"thicket", "floodland"},
-		clust_scarcity = 16 * 16 * 16,
-		clust_size = 11,
-		y_max = 5,
-		y_min = -30,
-		noise_threshold = 0.0,
-		noise_params = {
-			offset = 0.5,
-			scale = 0.2,
-			spread = {x = 5, y = 5, z = 5},
-			seed = -316,
-			octaves = 1,
-			persist = 0.0
-		},
-	})
 
