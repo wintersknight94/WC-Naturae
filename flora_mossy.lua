@@ -192,3 +192,17 @@ minetest.register_abm({
 			and nodecore.set_node(picked, {name = grp.dying})
 		end
 	})
+------------------------------------------------------------------------
+ -- Hardstone Degradation --
+minetest.register_alias(modname.. ":mossy_hstone0",	modname.. ":mossy_stone")
+for i = 1,7 do
+nodecore.register_limited_abm({
+		label = "moss soften stone",
+		nodenames = {modname.. ":mossy_hstone"..i},
+		interval = 100,
+		chance = 10,
+		action = function(pos)
+				nodecore.set_node(pos, {name = modname .. ":mossy_hstone"..i-1})
+		end
+	})
+end
