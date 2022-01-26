@@ -1,4 +1,4 @@
-SOON TO BE FULLY BACKWARDS-COMPATIBLE!!
+NOW FULLY BACKWARDS-COMPATIBLE!!	
 Expect more features soon!
 
 This is an updated and revised version of the original NodeCore Nature mod,
@@ -35,6 +35,7 @@ All features from WintersKnight's original NodeCore Nature mod, plus...
 	- Moss now dies if suffocated, no more hidden spreaders
   	- Moss wasting disease to clear large areas
   	- More mossable nodes, extensible API
+  	- Moss degrades hardstone over time
 - Dungeons improved
 	- Merge with vanilla complex dungeons with bricks/concrete/loot
 - Plant fibers have now been deprecated. Look forward to more complex life cycles in the future!
