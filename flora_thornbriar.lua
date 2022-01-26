@@ -44,7 +44,7 @@ minetest.register_node(modname .. ":thornbriar", {
 			flora = 1,
 			flammable = 2,
 			attached_node = 1,
-	--		damage_touch = 1,
+			damage_touch = 1,
 			thorny = 1,
 			[modname .. "_spread"] = 1,
 			stack_as_node = 1

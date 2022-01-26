@@ -195,7 +195,7 @@ for n = 1, 4 do
 	minetest.register_abm({
 		label = "bamboo aging " ..n,
 		nodenames = {modname .. ":bamboo_living_" ..n},
-		interval = 900, 	--900,
+		interval = 3600, 	--900,
 		chance = 1, 	--10,
 		action = function(pos)
 			local up = {x = pos.x, y = pos.y + 1, z = pos.z}
