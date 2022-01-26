@@ -11,7 +11,7 @@ include("item_thatch")
 
 include("feature_biomes")
 include("feature_blobs")
---include("feature_decay")
+include("feature_decay")
 include("feature_dungeon")
 include("feature_spread")
 
