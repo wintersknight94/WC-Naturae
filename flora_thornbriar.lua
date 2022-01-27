@@ -187,3 +187,19 @@ nodecore.register_craft({
 		},
 		itemscatter = i
 	})
+------------------------------------------------------------------------
+local x = math.random(3)
+------------------------------------------------------------------------
+nodecore.register_craft({
+	label = "break thorny stem into sticks",
+	action = "pummel",
+	duration = 2,
+	toolgroups = {crumbly = 1},
+	nodes = {
+		{match = modname.. ":briar_root", replace = "nc_terrain:dirt_loose"}
+	},
+	items = {
+		{name = "nc_tree:stick", count = x, scatter = x}
+	},
+	itemscatter = x
+})
