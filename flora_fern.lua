@@ -22,7 +22,7 @@ minetest.register_node(modname .. ":fern", {
 			flora = 1,
 			flammable = 2,
 			attached_node = 1,
---			decay_to_fibers = 1,
+			peat_grindable_item = 1
 			[modname .. "_spread"] = 1
 		},
 		sounds = nodecore.sounds("nc_terrain_swishy"),
