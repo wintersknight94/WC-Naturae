@@ -58,7 +58,7 @@ minetest.register_decoration({
 	place_on = {"nc_terrain:sand"},
 	sidelen = 4,
 	fill_ratio = 0.005,
-	y_max = 100,
+	y_max = 8,
 	y_min = -31000,
 	flags = "all_floors",
 	decoration = modname ..":shell",

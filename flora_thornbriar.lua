@@ -58,7 +58,7 @@ minetest.register_node(modname .. ":thornbriar", {
 		alternate_loose = {
 			description = ("Brambles"),
 			tiles = {modname .. "_thornbriar.png"},
-			color = "lightslategray",
+			color = "olive",
 			walkable = false,
 			groups = {
 				snappy = 1,
