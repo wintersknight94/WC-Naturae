@@ -5,7 +5,22 @@ local math_random
     = math.random
 -- LUALOCALS > ---------------------------------------------------------
 local modname = minetest.get_current_modname()
-
+------------------------------------------------------------------------
+local rootname = modname .. ":briar_root"
+local visdirt = "nc_tree:humus_loose"
+local dirt = "nc_terrain:dirt_loose"
+local rootdef = nodecore.underride({
+	description = "Thorny Roots",
+	drawtype = "plantlike_rooted",
+	falling_visual = visdirt,
+	special_tiles = {"nc_tree_tree_side.png^[mask:" ..modname.. "_stem_mask.png"},
+	drop = dirt,
+	no_self_repack = true,
+	groups = {grassable = 0, soil = 1, roots = 1, damage_touch = 1, stack_as_node = 1}
+}, minetest.registered_items[visdirt] or {})
+rootdef.groups.humus = nil
+minetest.register_node(rootname, rootdef)
+------------------------------------------------------------------------
 minetest.register_node(modname .. ":vine_thorny", {
 		description = "Thorny Vines",
 		drawtype = "plantlike",
@@ -66,15 +81,99 @@ minetest.register_node(modname .. ":thornbriar", {
 				flammable = 1,
 				falling_repose = 1,
 				stack_as_node = 1,
+				damage_touch = 0,
 				thorny = 1,
 				[modname .. "_spread"] = 0,
 			}
 		},
 		no_repack = true,
 	})
-
+------------------------------------------------------------------------
+minetest.register_abm({
+	label = "Thornroot Regrowing",
+	nodenames = {modname .. ":briar_root"},
+	neighbors = {"group:soil", "group:moist", "group:water"},
+	interval = 120,
+	chance = 20,
+	action = function(pos)
+		local up = {x = pos.x, y = pos.y + 1, z = pos.z}
+		local down = {x = pos.x, y = pos.y - 1; z = pos.z}
+		local upname = minetest.get_node(up).name
+			if upname == "air" then
+				minetest.set_node(up,{name = modname .. ":thornbriar"})
+		end
+	end,
+})
+------------------------------------------------------------------------
+minetest.register_abm({
+	label = "Thornbriar Rerooting",
+	nodenames = {modname .. ":thornbriar"},
+	neighbors = {"group:soil"},
+	interval = 120,
+	chance = 20,
+	action = function(pos)
+		local down = {x = pos.x, y = pos.y - 1; z = pos.z}
+		local dname = minetest.get_node(down).name
+			if minetest.get_item_group(dname, "root") > 0 then
+				return end
+			if minetest.get_item_group(dname, "soil") > 0 then
+				minetest.set_node(down,{name = modname .. ":briar_root"})
+		end
+	end,
+})
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+local thornroot = {
+	".....",
+	".....",
+	"..r..",
+	".....",
+	".....",
+}
+local thornbriar = {
+	".....",
+	".....",
+	"..s..",
+	".....",
+	".....",
+}
+------------------------------------------------------------------------
+nodecore.thornbriar_schematic = nodecore.ezschematic(
+	{
+		["."] = {name = "air", prob = 0},
+		r = {name = modname.. ":briar_root", prob = 255},
+		s = {name = modname.. ":thornbriar", prob = 250}	
+	},
+	{
+		thornroot,
+		thornbriar	
+	},
+	{
+		yslice_prob = {
+			{ypos = 1, prob = 255},
+			{ypos = 2, prob = 255}
+		}
+	}
+)
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = {"group:soil", "group:mud"},
+	sidelen = 16,
+	fill_ratio = 0.5,
+	biomes = {"thicket"},
+	y_min = -40,
+	y_max = 200,
+	schematic = nodecore.thornbriar_schematic,
+	flags = "force_placement, place_center_x, place_center_z, all_floors",
+--	place_offset_y = -1,
+--	rotation = "random",
+	replacements = {},
+})
+------------------------------------------------------------------------
 local i = math.random(5)
-
+------------------------------------------------------------------------
 nodecore.register_craft({
 		label = "break brambles into sticks",
 		action = "pummel",
@@ -88,31 +187,3 @@ nodecore.register_craft({
 		},
 		itemscatter = i
 	})
-
-minetest.register_decoration({
-		label = {modname .. ":thornbriar"},
-		deco_type = "simple",
-		place_on = {"group:soil","group:mud"},
-		sidelen = 16,
-		fill_ratio = 0.4,
-		biomes = {"thicket"},
-		y_max = 200,
-		y_min = -40,
-		height = 1,
-		decoration = {modname .. ":thornbriar"},
-	})
-	
-minetest.register_decoration({
-		label = {modname .. ":thornbriar"},
-		deco_type = "simple",
-		place_on = {"group:sand"},
-		sidelen = 4,
-		fill_ratio = 0.001,
-		biomes = {"dune"},
-		y_max = 200,
-		y_min = -40,
-		height = 1,
-		decoration = {modname .. ":thornbriar"},
-	})
-
-

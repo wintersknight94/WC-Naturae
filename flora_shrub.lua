@@ -164,7 +164,7 @@ nodecore.register_aism({
 	end
 })
 ------------------------------------------------------------------------
-local x = math.random(0, 3)
+local x = math.random(3)
 nodecore.register_craft({
 	label = "break shrub stem into sticks",
 	action = "pummel",
