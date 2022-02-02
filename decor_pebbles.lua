@@ -5,15 +5,15 @@ local minetest, nodecore
 local modname = minetest.get_current_modname()
 
 
-minetest.override_item("nc_stonework:chip",{
-	on_place = function(itemstack, placer, pointed_thing)
-	local pos = nodecore.buildable_to(pointed_thing.under)
-		and pointed_thing.under or pointed_thing.above
-	nodecore.set_loud(pos, {name = modname .. ":pebble"})
-	itemstack:take_item(1)
-	return itemstack
-end
-})
+--minetest.override_item("nc_stonework:chip",{
+--	on_place = function(itemstack, placer, pointed_thing)
+--	local pos = nodecore.buildable_to(pointed_thing.under)
+--		and pointed_thing.under or pointed_thing.above
+--	nodecore.set_loud(pos, {name = modname .. ":pebble"})
+--	itemstack:take_item(1)
+--	return itemstack
+--end
+--})
 
 minetest.register_node(modname .. ":pebble", {
 		description = "Pebble",
