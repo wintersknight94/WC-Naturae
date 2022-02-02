@@ -7,7 +7,7 @@ local modname = minetest.get_current_modname()
 
 nodecore.register_abm({
 	label = "Pebble Erosion",
-	nodenames = {"nc_terrain:stone", "nc_terrain:gravel"},
+	nodenames = {"nc_terrain:gravel"},
 	neighbors = {"nc_terrain:water_flowing"},
 	neighbors_invert = true,
 	interval = 120,
@@ -24,7 +24,7 @@ nodecore.register_abm({
 nodecore.register_abm({
 	label = "Pearl Formation",
 	nodenames = {"nc_lux:stone"},
-	neighbors = {"group:moist"},
+	neighbors = {"group:moist", "group:water"},
 	interval = 120,
 	chance = 20,
 	action = function(pos)
@@ -37,7 +37,7 @@ nodecore.register_abm({
 })
 
 nodecore.register_abm({
-	label = "Shell Wash",
+	label = "Shell Washing Ashore",
 	nodenames = {"nc_terrain:sand"},
 	neighbors = {"nc_terrain:water_flowing"},
 	neighbors_invert = true,
