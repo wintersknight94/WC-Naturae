@@ -102,3 +102,17 @@ minetest.register_decoration({
 		rotation = "random",
 		replacements = {}
 	})
+	
+minetest.register_decoration({
+		deco_type = "schematic",
+		place_on = {"group:sand"},
+		sidelen = 16,
+		fill_ratio = 0.0025,
+		biomes = {"tropic"},
+		y_min = 1,
+		y_max = 1000,
+		schematic = nodecore.talltree_schematic,
+		flags = "place_center_x, place_center_z",
+		rotation = "random",
+		replacements = {}
+	})

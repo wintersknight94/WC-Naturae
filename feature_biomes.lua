@@ -6,8 +6,10 @@ local minetest
 local modname = minetest.get_current_modname()
 
 -- ================================================================== --
+minetest.unregister_biome("unknown")
+-- ================================================================== --
 
-minetest.register_biome({
+minetest.register_biome({	
 		name = "grassland",
 		node_top = "nc_terrain:dirt_with_grass",
 		depth_top = 1,
@@ -23,7 +25,7 @@ minetest.register_biome({
 		humidity_point = 50,
 	})
 
-minetest.register_biome({
+minetest.register_biome({	
 		name = "floodland",
 		node_top = modname .. ":muck",
 		depth_top = 1,
@@ -37,22 +39,6 @@ minetest.register_biome({
 		horizontal_blend = 16,
 		heat_point = 50,
 		humidity_point = 100
-	})
-
-minetest.register_biome({
-		name = "thicket",
-		node_top = "nc_terrain:dirt_with_grass",
-		depth_top = 1,
-		node_filler = "nc_terrain:dirt",
-		depth_filler = 2,
-		node_riverbed = "nc_terrain:sand",
-		depth_riverbed = 2,
-		y_min = 2,
-		y_max = 48,
-		vertical_blend = 4,
-		horizontal_blend = 16,
-		heat_point = 100,
-		humidity_point = 100,
 	})
 	
 minetest.register_biome({
@@ -103,15 +89,15 @@ minetest.register_biome({
 		humidity_point = 80,
 	})
 	
-minetest.register_biome({
+minetest.register_biome({	-- Hot Desert
 		name = "dune",
 		node_top = "nc_terrain:sand",
-		depth_top = 3,
-		node_filler = "nc_concrete:sandstone",
-		depth_filler = 12,
-		node_riverbed = "nc_terrain:gravel",
-		depth_riverbed = 2,
-		y_min = 10,
+		depth_top = 5,
+		node_stone = "nc_concrete:sandstone",
+--		depth_filler = 12,
+		node_riverbed = "nc_terrain:sand",
+		depth_riverbed = 1,
+		y_min = -20,
 		y_max = 150,
 		vertical_blend = 16,
 		horizontal_blend = 16,
@@ -119,4 +105,69 @@ minetest.register_biome({
 		humidity_point = 0,
 	})
 	
+minetest.register_biome({	-- Cold Desert
+		name = "stonewaste",
+		node_top = "nc_terrain:gravel",
+		depth_top = 2,
+		node_filler = "nc_terrain:cobble",
+		depth_filler = 2,
+		node_riverbed = "nc_terrain:gravel",
+		depth_riverbed = 3,
+		y_min = -20,
+		y_max = 150,
+		vertical_blend = 16,
+		horizontal_blend = 16,
+		heat_point = 0,
+		humidity_point = 0,
+	})
+	
+minetest.register_biome({
+		name = "thicket",
+		node_top = "nc_terrain:dirt_with_grass",
+		depth_top = 1,
+		node_filler = "nc_terrain:dirt",
+		depth_filler = 2,
+		node_riverbed = "nc_terrain:sand",
+		depth_riverbed = 2,
+		y_min = 2,
+		y_max = 48,
+		vertical_blend = 4,
+		horizontal_blend = 16,
+		heat_point = 100,
+		humidity_point = 100,
+	})
+	
+minetest.register_biome({
+		name = "tropic",
+		node_top = "nc_terrain:sand",
+		depth_top = 1,
+--		node_filler = "nc_concrete:sandstone",
+--		depth_filler = 3,
+		node_riverbed = "nc_terrain:sand",
+		depth_riverbed = 3,
+		y_min = -24,
+		y_max = 148,
+		vertical_blend = 8,
+		horizontal_blend = 16,
+		heat_point = 80,
+		humidity_point = 100,
+	})
+
+minetest.register_biome({	
+		name = "mudflat",
+		node_top = modname .. ":muck",
+		depth_top = 1,
+		node_filler = "nc_terrain:dirt",
+		depth_filler = 2,
+		node_stone = "nc_concrete:adobe",
+		node_riverbed = modname.. ":muck",
+		depth_riverbed = 4,
+		y_min = -2,
+		y_max = 8,
+		vertical_blend = 4,
+		horizontal_blend = 16,
+		heat_point = 60,
+		humidity_point = 100
+	})
+
 

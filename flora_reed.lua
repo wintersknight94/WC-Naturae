@@ -59,6 +59,18 @@ minetest.register_decoration({
 		biomes = {"floodlands"},
 		param2 = 4
 	})
+minetest.register_decoration({
+		label = {modname .. ":mudreeds"},
+		deco_type = "simple",
+		place_on = {"group:mud"},
+		sidelen = 16,
+		fill_ratio = 0.1,
+		y_max = 8,
+		y_min = -4,
+		decoration = {"nc_flora:rush"},
+		biomes = {"mudflat"},
+		param2 = 4
+	})
 
 ------------------------------------------------------------------------
 -- CONVERSION

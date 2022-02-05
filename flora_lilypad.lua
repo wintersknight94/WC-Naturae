@@ -33,7 +33,7 @@ minetest.register_node(modname .. ":lilypad", {
 		},
 --		drop = modname .. ":plant_fibers"
 	})
-
+	
 minetest.register_decoration({
 		label = {modname .. ":lilypad"},
 		deco_type = "simple",
@@ -92,3 +92,43 @@ minetest.register_abm({
 			end
 		end,
 	})
+	
+minetest.register_node(modname .. ":mudlily", {
+		description = "Mudlily",
+		drawtype = "nodebox",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		tiles = {modname .. "_lilypad.png", modname .. "_lilypad_bottom.png"},
+		inventory_image = modname .. "_lilypad.png",
+		wield_image = modname .. "_lilypad.png",
+		use_texture_alpha = "clip",
+		liquids_pointable = true,
+		walkable = false,
+		floodable = true,
+--		silktouch = false,
+		groups = {snappy = 1, flora = 1, flammable = 3},
+		sounds = nodecore.sounds("nc_terrain_swishy"),
+		node_placement_prediction = "",
+		node_box = {
+			type = "fixed",
+			fixed = {-0.5, -31/64, -0.5, 0.5, -15/32, 0.5}
+		},
+		selection_box = {
+			type = "fixed",
+			fixed = {-7/16, -0.5, -7/16, 7/16, -15/32, 7/16}
+		},
+		drop = modname .. ":lilypad"
+	})
+	
+minetest.register_decoration({
+		label = {modname .. ":mudlily"},
+		deco_type = "simple",
+		place_on = {"group:mud"},
+		sidelen = 16,
+		fill_ratio = 0.01,
+		biomes = {"mudflat"},
+		decoration = modname .. ":mudlily",
+		param2 = 0,
+		param2_max = 3
+	})
+

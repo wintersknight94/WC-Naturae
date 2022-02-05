@@ -65,4 +65,16 @@ minetest.register_decoration({
 	rotation = "random",
 })
 
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"nc_terrain:sand"},
+	sidelen = 4,
+	fill_ratio = 0.0075,
+	y_max = 12,
+	flags = "all_floors",
+	biomes = "tropic",
+	decoration = modname ..":shell",
+	rotation = "random",
+})
+
 

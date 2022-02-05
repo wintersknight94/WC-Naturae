@@ -34,7 +34,7 @@ minetest.register_decoration({
 		place_on = {"group:soil", "group:sand", "group:gravel"},
 		sidelen = 16,
 		fill_ratio = 0.01,
-		biomes = {"dune", "unknown", "ancient_forest"},
+		biomes = {"dune", "stonewaste", "ancient_forest"},
 		y_max = 2000,
 		y_min = -100,
 		decoration = {modname .. ":deadtwig"},

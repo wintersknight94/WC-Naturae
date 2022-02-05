@@ -33,7 +33,7 @@ minetest.register_ore({
 		ore_type = "blob",
 		ore  = modname.. ":mycelium",
 		wherein = {"group:soil"},
-		biomes = {"old_forest", "ancient_forest", "thicket"},
+		biomes = {"old_forest", "ancient_forest", "thicket", "mudflat"},
 		clust_scarcity = 32 * 32 * 32,
 		clust_num_ores = 3,
 		clust_size = 7,
@@ -50,4 +50,24 @@ minetest.register_ore({
 		},
 	})
 
+minetest.register_ore({
+		ore_type = "blob",
+		ore  = "nc_terrain:sand",
+		wherein = {modname.. ":muck", "nc_terrain:dirt", "nc_terrain:sand", "nc_terrain:gravel"},
+		biomes = {"thicket", "floodland", "seabed"},
+		clust_scarcity = 16 * 16 * 16,
+		clust_num_ores = 12,
+		clust_size = 12,
+		y_max = 1,
+		y_min = -32,
+		noise_threshold = 0.0,
+		noise_params = {
+			offset = 0.4,
+			scale = 0.25,
+			spread = {x = 25, y = 25, z = 25},
+			seed = -419,
+			octaves = 1,
+			persist = 0.0
+		},
+	})
 

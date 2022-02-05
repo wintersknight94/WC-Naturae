@@ -191,7 +191,7 @@ nodecore.register_craft({
 	})
 end
 ------------------------------------------------------------------------
-for n = 1, 4 do
+for n = 1, 3 do
 	minetest.register_abm({
 		label = "bamboo aging " ..n,
 		nodenames = {modname .. ":bamboo_living_" ..n},
@@ -217,11 +217,25 @@ minetest.register_decoration({
 		y_max = 200,
 		y_min = 1,
 		decoration = modname .. ":bamboo_living_" ..n,
-		height = 1,
-		height_max = 12,
-		biomes = {"thicket", "floodland"}
+		height = n,
+		height_max = n+10,
+		biomes = {"thicket", "floodland", "mudflat"}
 	})
 end
+------------------------------------------------------------------------
+minetest.register_decoration({
+		label = modname .. ":bamboo_living_4",
+		deco_type = "simple",
+		place_on = {"group:soil", "group:mud"},
+		sidelen = 16,
+		fill_ratio = 0.0001,
+		y_max = 200,
+		y_min = 1,
+		decoration = modname .. ":bamboo_living_4",
+		height = 4,
+		height_max = 14,
+		biomes = {"thicket", "floodland"}
+	})
 ------------------------------------------------------------------------
 -- LIGHTING FIX
 
