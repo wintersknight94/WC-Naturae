@@ -219,7 +219,7 @@ minetest.register_decoration({
 		decoration = modname .. ":bamboo_living_" ..n,
 		height = n,
 		height_max = n+10,
-		biomes = {"thicket", "floodland", "mudflat"}
+		biomes = {"thicket", "floodland"}
 	})
 end
 ------------------------------------------------------------------------
@@ -236,6 +236,22 @@ minetest.register_decoration({
 		height_max = 14,
 		biomes = {"thicket", "floodland"}
 	})
+------------------------------------------------------------------------
+for m = 1, 2 do
+minetest.register_decoration({
+		label = modname .. ":bamboo_living_" ..m,
+		deco_type = "simple",
+		place_on = {"group:mud"},
+		sidelen = 16,
+		fill_ratio = 0.001,
+		y_max = 200,
+		y_min = 1,
+		decoration = modname .. ":bamboo_living_" ..m,
+		height = m*2,
+		height_max = m*6,
+		biomes = {"mudflat"}
+	})
+end
 ------------------------------------------------------------------------
 -- LIGHTING FIX
 
