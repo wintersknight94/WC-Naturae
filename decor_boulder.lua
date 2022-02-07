@@ -71,7 +71,7 @@ minetest.register_decoration({
 		place_on = {"group:soil", "group:sand", "group:gravel"},
 		sidelen = 16,
 		fill_ratio = 0.001,
-		biomes = {"grassland", "stonewaste", "old_forest", "ancient_forest"},
+		biomes = {"grassland", "stonewaste", "stoneprairie", "old_forest", "ancient_forest"},
 		y_min = 1,
 		y_max = 100,
 		schematic = nodecore.boulder_schematic,

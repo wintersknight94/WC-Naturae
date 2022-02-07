@@ -219,7 +219,7 @@ minetest.register_decoration({
 		decoration = modname .. ":bamboo_living_" ..n,
 		height = n,
 		height_max = n+10,
-		biomes = {"thicket", "floodland"}
+		biomes = {"thicket", "floodland", "rainforest"}
 	})
 end
 ------------------------------------------------------------------------
@@ -234,7 +234,7 @@ minetest.register_decoration({
 		decoration = modname .. ":bamboo_living_4",
 		height = 4,
 		height_max = 14,
-		biomes = {"thicket", "floodland"}
+		biomes = {"thicket", "floodland", "rainforest"}
 	})
 ------------------------------------------------------------------------
 for m = 1, 2 do
@@ -249,7 +249,7 @@ minetest.register_decoration({
 		decoration = modname .. ":bamboo_living_" ..m,
 		height = m*2,
 		height_max = m*6,
-		biomes = {"mudflat"}
+		biomes = {"mudflat", "rainforest"}
 	})
 end
 ------------------------------------------------------------------------

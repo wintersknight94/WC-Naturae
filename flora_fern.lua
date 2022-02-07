@@ -16,6 +16,8 @@ minetest.register_node(modname .. ":fern", {
 		wield_image = ferntile,
 		sunlight_propagates = true,
 		paramtype = 'light',
+		paramtype2 = "meshoptions",
+		place_param2 = 10,
 		walkable = false,
 		groups = {
 			snappy = 1,
@@ -38,8 +40,9 @@ minetest.register_decoration({
 		place_on = {"group:soil"},
 		sidelen = 16,
 		fill_ratio = 0.1,
-		biomes = {"forest", "old_forest", "ancient_forest"},
+		biomes = {"forest", "old_forest", "ancient_forest", "rainforest"},
 		y_max = 2000,
 		y_min = -20,
 		decoration = {modname .. ":fern"},
+		param2 = 10
 	})

@@ -4,16 +4,19 @@ local minetest, nodecore
 -- LUALOCALS > ---------------------------------------------------------
 
 local modname = minetest.get_current_modname()
+local starflower = "(nc_flora_flower_color.png^[mask:" ..modname.. "_starstem_mask.png)^" ..modname.. "_starflower.png"
 
 minetest.register_node(modname .. ":starflower", {
 		description = "Pinnacle Flower",
 		drawtype = 'plantlike',
 		waving = 1,
-		tiles = {modname .. "_starflower.png"},
-		wield_image = modname .. "_starflower.png",
-		inventory_image = modname .. "_starflower.png",
+		tiles = {starflower},
+		wield_image = starflower,
+		inventory_image = starflower,
 		sunlight_propagates = true,
 		paramtype = 'light',
+		paramtype2 = "meshoptions",
+		place_param2 = 10,
 		light_source = 7,
 		walkable = false,
 		groups = {
@@ -48,6 +51,7 @@ minetest.register_decoration({
 		y_max = 31000,
 		y_min = 100,
 		decoration = {modname .. ":starflower"},
+		param2 = 10
 	})
 
 minetest.register_decoration({
@@ -67,4 +71,17 @@ minetest.register_decoration({
 		y_max = 31000,
 		y_min = 200,
 		decoration = {modname .. ":starflower"},
+		param2 = 10
+	})
+minetest.register_decoration({
+		label = {modname .. ":starflower"},
+		deco_type = "simple",
+		place_on = {"group:soil"},
+		sidelen = 16,
+		fill_ratio = 0.001,
+		y_max = 31000,
+		y_min = 50,
+		decoration = {modname .. ":starflower"},
+		biomes = {"rainforest"},
+		param2 = 10
 	})

@@ -57,8 +57,36 @@ end
 
 ---------------suff,	desc,	light_source,   ymin, 	ymax,	offset, 	scale, 	seed,	 place, 			biome-----
 
-register_shroom("", 	"Mushroom",		nil,	 -10, 	80, 		-0.01, 	0.1, 	42, 	{"group:soil", "group:mud", "group:fungal", "group:log"}, {"floodland", "thicket", "forest", "old_forest", "ancient_forest", "mudflat"})
+register_shroom("", 	"Mushroom",		nil,	 -10, 	80, 		-0.01, 	0.1, 	42, 	{"group:soil", "group:mud", "group:fungal", "group:log"}, {"floodland", "thicket", "forest", "old_forest", "ancient_forest", "mudflat", "rainforest"})
 	
 register_shroom("_glow",	"Glowing Mushroom",	2, 	-400, 	1, 		-0.01, 	0.1, 	94, 	{"group:soil", "group:mud", "group:log", "group:crumbly", "group:cobble"}, {""})
 	
 register_shroom("_lux",	"Luxaeterna",		4, 	-1000,   -100, 	0.72, 	0.1, 	69, 	{"group:soil", "group:mud", "group:crumbly", "group:cobble"}, {""})
+
+------------------------------------------------------------------------
+
+minetest.register_decoration({
+		label = modname .. ":rainforest_glowshroom",
+		deco_type = "simple",
+		place_on = {"group:soil", "group:fungal", "group:mossy"},
+		sidelen = 16,
+		fill_ratio = 0.001,
+		y_max = 50,
+		y_min = -50,
+		decoration = modname .. ":mushroom_glow",
+		biomes = {"rainforest"},
+		param2 = 10,
+	})
+minetest.register_decoration({
+		label = modname .. ":rainforest_luxshroom",
+		deco_type = "simple",
+		place_on = {"group:soil", "group:fungal", "group:mossy"},
+		sidelen = 16,
+		fill_ratio = 0.001,
+		y_max = 50,
+		y_min = -50,
+		decoration = modname .. ":mushroom_lux",
+		biomes = {"rainforest"},
+		param2 = 10,
+	})
+

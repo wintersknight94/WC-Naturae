@@ -178,45 +178,67 @@ nodecore.antiquetree_schematic = nodecore.ezschematic(
 		l = {name = "nc_tree:leaves", prob = 255},
 	},
 	{
-		aroot, --1
-		atrunkthic, --2
-		atrunkthic, --3
-		atrunkvar1, --4
-		atrunkvar2, --5
-		atrunk, --6
-		atrunk, --7
-		atrunk, --8
-		atrunk, --9
-		atrunk, --10
-		atrunk, --11
-		atrunk, --12
-		atrunk, --13
-		abot, --14
-		alow, --15
-		alow, --16
-		ahi, --17
-		atop --18
+		aroot, 		--1
+		aroot, 		--2
+		atrunkthic, 	--3
+		atrunkthic, 	--4
+		atrunkthic, 	--5
+		atrunkvar1, 	--6
+		atrunkvar2, 	--7
+		atrunk, 		--8
+		atrunk, 		--9
+		atrunk, 		--10
+		atrunk, 		--11
+		atrunk, 		--12
+		atrunk, 		--13
+		atrunk, 		--14
+		atrunk, 		--15
+		atrunk, 		--16
+		atrunk, 		--17
+		atrunk, 		--18
+		atrunk, 		--19
+		atrunk, 		--20
+		atrunk, 		--21
+		atrunk, 		--22
+		atrunk, 		--23
+		atrunk, 		--24
+		abot, 		--25
+		alow, 		--26
+		alow, 		--27
+		ahi, 		--28
+		atop 		--29
 	},
 	{
 		yslice_prob = {
 			{ypos = 1, prob = 255},
-			{ypos = 2, prob = 255},
+			{ypos = 2, prob = 200},
 			{ypos = 3, prob = 255},
-			{ypos = 4, prob = 225},
-			{ypos = 5, prob = 160},
-			{ypos = 6, prob = 160},
-			{ypos = 7, prob = 255},
+			{ypos = 4, prob = 200},
+			{ypos = 5, prob = 255},
+			{ypos = 6, prob = 225},
+			{ypos = 7, prob = 160},
 			{ypos = 8, prob = 160},
 			{ypos = 9, prob = 160},
 			{ypos = 10, prob = 160},
 			{ypos = 11, prob = 160},
-			{ypos = 12, prob = 255},
-			{ypos = 13, prob = 255},
-			{ypos = 14, prob = 255},
-			{ypos = 15, prob = 255},
-			{ypos = 16, prob = 125},
-			{ypos = 17, prob = 255},
+			{ypos = 12, prob = 160},
+			{ypos = 13, prob = 160},
+			{ypos = 14, prob = 160},
+			{ypos = 15, prob = 160},
+			{ypos = 16, prob = 160},
+			{ypos = 17, prob = 160},
 			{ypos = 18, prob = 255},
+			{ypos = 19, prob = 160},
+			{ypos = 20, prob = 160},
+			{ypos = 21, prob = 160},
+			{ypos = 22, prob = 160},
+			{ypos = 23, prob = 255},
+			{ypos = 24, prob = 255},
+			{ypos = 25, prob = 255},
+			{ypos = 26, prob = 255},
+			{ypos = 27, prob = 125},
+			{ypos = 28, prob = 255},
+			{ypos = 29, prob = 255},
 		}
 	}
 )
@@ -226,7 +248,7 @@ minetest.register_decoration({
 		place_on = {"group:soil"},
 		sidelen = 16,
 		fill_ratio = 0.02,
-		biomes = {"old_forest", "ancient_forest"},
+		biomes = {"ancient_forest"},
 		y_min = 1,
 		y_max = 200,
 		schematic = nodecore.antiquetree_schematic,

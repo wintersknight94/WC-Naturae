@@ -71,7 +71,18 @@ minetest.register_decoration({
 		biomes = {"mudflat"},
 		param2 = 4
 	})
-
+minetest.register_decoration({
+		label = {modname .. ":rainreeds"},
+		deco_type = "simple",
+		place_on = {"group:soil", "group:sand"},
+		sidelen = 16,
+		fill_ratio = 0.1,
+		y_max = 32,
+		y_min = -32,
+		decoration = {modname .. ":reeds"},
+		biomes = {"rainforest"},
+		param2 = 4
+	})
 ------------------------------------------------------------------------
 -- CONVERSION
 

@@ -4,7 +4,8 @@ local minetest, nodecore
 -- LUALOCALS > ---------------------------------------------------------
 local modname = minetest.get_current_modname()
 ------------------------------------------------------------------------
-local twig = "nc_tree_tree_side.png^[mask:" ..modname.. "_stem_mask.png"
+local logside = "(nc_tree_tree_side.png^[colorize:black:75)"
+local twig = logside.. "^[mask:" ..modname.. "_stem_mask.png"
 ------------------------------------------------------------------------
 minetest.register_node(modname .. ":deadtwig", {
 		description = "Dry Twigs",
@@ -33,8 +34,8 @@ minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"group:soil", "group:sand", "group:gravel"},
 		sidelen = 16,
-		fill_ratio = 0.01,
-		biomes = {"dune", "stonewaste", "ancient_forest"},
+		fill_ratio = 0.001,
+		biomes = {"dune", "stonewaste", "stoneprairie", "ancient_forest"},
 		y_max = 2000,
 		y_min = -100,
 		decoration = {modname .. ":deadtwig"},

@@ -94,7 +94,7 @@ minetest.register_decoration({
 		place_on = {"group:soil"},
 		sidelen = 16,
 		fill_ratio = 0.02,
-		biomes = {"forest", "thicket", "old_forest"},
+		biomes = {"forest", "thicket", "old_forest", "rainforest"},
 		y_min = 1,
 		y_max = 1000,
 		schematic = nodecore.talltree_schematic,

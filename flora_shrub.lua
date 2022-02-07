@@ -108,6 +108,20 @@ minetest.register_decoration({
 --	rotation = "random",
 	replacements = {},
 })
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = {"group:soil"},
+	sidelen = 16,
+	fill_ratio = 0.001,
+	biomes = {"rainforest", "stoneprairie"},
+	y_min = -20,
+	y_max = 120,
+	schematic = nodecore.shrub_schematic,
+	flags = "force_placement, place_center_x, place_center_z, all_floors",
+--	place_offset_y = -1,
+--	rotation = "random",
+	replacements = {},
+})
 ------------------------------------------------------------------------
 minetest.register_abm({
 	label = "Shrub Rerooting",

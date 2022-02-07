@@ -26,7 +26,8 @@ local function register_extra_grass(offset, scale, length)
 			},
 			y_max = 31000,
 			y_min = 1,
-			decoration = {modname .. ":grass_" .. length},
+--			decoration = {modname .. ":grass_" .. length},
+			decoration = {"nc_flora:grass_" .. length},
 			param2 = 2
 		})
 end
