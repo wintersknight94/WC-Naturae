@@ -23,6 +23,9 @@ include("decor_decaylog")
 include("decor_tree_antique")
 include("decor_tree_grand")
 include("decor_tree_tall")
+include("decor_deadshrub")
+
+include("gourd_pumpkin")
 
 include("flora_bamboo")
 include("flora_fern")
