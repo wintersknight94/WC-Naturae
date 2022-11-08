@@ -5,17 +5,18 @@ local minetest, nodecore, math, math_random
 local modname = minetest.get_current_modname()
 ------------------------------------------------------------------------
 local rootname = modname .. ":shrub_root"
-local visdirt = "nc_tree:humus_loose"
+local visdirt = "nc_tree:humus"
 local dirt = "nc_terrain:dirt_loose"
 local rootdef = nodecore.underride({
 	description = "Shrub Roots",
 	drawtype = "plantlike_rooted",
+	tiles = {"nc_tree_humus.png"},
 	falling_visual = visdirt,
 	special_tiles = {"nc_tree_tree_side.png^[mask:" ..modname.. "_stem_mask.png"},
 	drop = dirt,
 	no_self_repack = true,
-	groups = {grassable = 0, soil = 1, roots = 1}
-}, minetest.registered_items[visdirt] or {})
+	groups = {grassable = 0, soil = 1, roots = 1, choppy = 2, crumbly = 2}
+}, minetest.registered_items[dirt] or {})
 rootdef.groups.humus = nil
 minetest.register_node(rootname, rootdef)
 ------------------------------------------------------------------------
@@ -101,7 +102,7 @@ minetest.register_decoration({
 	fill_ratio = 0.01,
 	biomes = {"unknown", "grassland", "thicket", "forest", "ancient_forest"},
 	y_min = -20,
-	y_max = 200,
+	y_max = 120,
 	schematic = nodecore.shrub_schematic,
 	flags = "force_placement, place_center_x, place_center_z, all_floors",
 --	place_offset_y = -1,
