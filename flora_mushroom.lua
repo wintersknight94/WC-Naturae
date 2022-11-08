@@ -57,7 +57,7 @@ end
 
 ---------------suff,	desc,	light_source,   ymin, 	ymax,	offset, 	scale, 	seed,	 place, 			biome-----
 
-register_shroom("", 	"Mushroom",		nil,	 -10, 	80, 		-0.01, 	0.1, 	42, 	{"group:soil", "group:mud", "group:fungal", "group:log"}, {"floodland", "thicket", "forest", "old_forest", "ancient_forest", "mudflat", "rainforest"})
+register_shroom("", 	"Mushroom",		nil,	 -10, 	200,		-0.01, 	0.1, 	42, 	{"group:soil", "group:mud", "group:fungal", "group:log"}, {"floodland", "thicket", "forest", "old_forest", "ancient_forest", "mudflat", "rainforest"})
 	
 register_shroom("_glow",	"Glowing Mushroom",	2, 	-400, 	1, 		-0.01, 	0.1, 	94, 	{"group:soil", "group:mud", "group:log", "group:crumbly", "group:cobble"}, {""})
 	

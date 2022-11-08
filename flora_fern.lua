@@ -4,7 +4,7 @@ local minetest, nodecore
 -- LUALOCALS > ---------------------------------------------------------
 local modname = minetest.get_current_modname()
 ------------------------------------------------------------------------
-local fern = "(nc_flora_flower_color.png^[colorize:darkolivegreen:200)^(nc_terrain_grass_top.png^[mask:nc_lode_mask_molten.png)"
+local fern = "(nc_flora_sedge_color.png^[colorize:darkolivegreen:200)^(nc_terrain_grass_top.png^[mask:nc_lode_mask_molten.png)"
 local ferntile = fern.. "^[mask:" ..modname.. "_fern_mask.png"
 ------------------------------------------------------------------------
 minetest.register_node(modname .. ":fern", {
@@ -24,6 +24,7 @@ minetest.register_node(modname .. ":fern", {
 			flora = 1,
 			flammable = 2,
 			attached_node = 1,
+			stack_as_node = 1,
 			peat_grindable_item = 1,
 			[modname .. "_spread"] = 1
 		},
@@ -46,3 +47,5 @@ minetest.register_decoration({
 		decoration = {modname .. ":fern"},
 		param2 = 10
 	})
+------------------------------------------------------------------------
+

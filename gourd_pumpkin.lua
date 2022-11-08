@@ -10,6 +10,26 @@ local skin = "nc_igneous_pumice.png^[colorize:darkorange:50"
 local hollow = "nc_fire_coal_4.png^[mask:" ..modname.. "_mask_pumpkin.png"
 local hollowface = "(" ..skin.. ")^(" ..hollow.. ")"
 ------------------------------------------------------------------------
+minetest.register_node(modname .. ":pumseed", {
+		description = "Pumseed",
+		drawtype = "plantlike",
+		paramtype = "light",
+		visual_scale = 0.5,
+		wield_scale = {x = 0.75, y = 0.75, z = 1.5},
+		collision_box = nodecore.fixedbox(-3/16, -0.5, -3/16, 3/16, 0, 3/16),
+		selection_box = nodecore.fixedbox(-3/16, -0.5, -3/16, 3/16, 0, 3/16),
+		inventory_image = "[combine:24x24:4,4=" .. modname
+		.. "_pumseed.png\\^[resize\\:16x16",
+		tiles = {modname .. "_pumseed.png"},
+		groups = {
+			snappy = 1,
+			flammable = 3,
+			attached_node = 1,
+		},
+		node_placement_prediction = "nc_items:stack",
+		place_as_item = true,
+		sounds = nodecore.sounds("nc_tree_corny")
+	})
 ----------Pumpkin----------
 minetest.register_node(modname.. ":pumpkin", {
 	description = "Pumpkin",
@@ -100,7 +120,10 @@ nodecore.register_craft({
 			match = modname.. ":pumpkin",
 			replace = modname .. ":pumpkin_carved"
 		}
-	}
+	},
+	items = {
+			{name = modname..":pumseed", count = 1, scatter = 3},
+		},
 })
 ----------Joke----------
 nodecore.register_craft({
@@ -115,11 +138,65 @@ nodecore.register_craft({
 			}
 		},
 		items = {
-			{name = "nc_tree:stick", count = 2, scatter = 3},
---			{name = "nc_tree:eggcorn", count = 1, scatter = 3},
+			{name = modname..":pumseed", count = 1, scatter = 3},
+			{name = "nc_tree:stick", count = 1, scatter = 3},
 			{name = "nc_flora:rush_dry", count = 1, scatter = 3},
 			{name = "nc_flora:sedge_1", count = 1, scatter = 3},
---			{name = "nc_stonework:chip", count = 1, scatter = 3}
 		},
 		itemscatter = 3
 	})
+------------------------------------------------------------------------
+local epname = modname .. ":pumseed_planted"
+------------------------------------------------------------------------
+local function soilboost(pos, name)
+	local def = minetest.registered_items[name]
+	local soil = def.groups.soil or 0
+	if soil > 2 then
+		nodecore.soaking_abm_push(pos, "pumseed", (soil - 2) * 500)
+		nodecore.soaking_particles(pos, (soil - 2) * 10,
+			0.5, .45, modname .. ":pumpkin")
+	end
+end
+nodecore.register_item_entity_step(function(self)
+		if self.itemstring ~= modname .. ":pumseed" then
+			return
+		end
+
+		local pos = self.object:get_pos()
+		if not pos then return end
+
+		local curnode = minetest.get_node(pos)
+		if minetest.get_item_group(curnode.name, "dirt_loose") < 1 then
+			return
+		end
+
+		nodecore.set_loud(pos, {name = epname})
+		self.itemstring = ""
+		self.object:remove()
+
+		soilboost(pos, curnode.name)
+	end)
+nodecore.register_craft({
+		label = "pumseed planting",
+		action = "stackapply",
+		wield = {groups = {dirt_loose = true}},
+		consumewield = 1,
+		indexkeys = {modname .. ":pumseed"},
+		nodes = {{match = modname .. ":pumseed", replace = epname}},
+		after = function(pos, data)
+			soilboost(pos, data.wield:get_name())
+		end
+	})
+local ldname = "nc_terrain:dirt_loose"
+local epdef = nodecore.underride({
+		description = "Pumsprout",
+		drawtype = "plantlike_rooted",
+		falling_visual = "nc_terrain:dirt_loose",
+		special_tiles = {modname .. "_pumseed_planted.png"},
+		drop = ldname,
+		no_self_repack = true,
+		groups = {grassable = 0}
+	}, minetest.registered_items[ldname] or {})
+epdef.groups.soil = nil
+minetest.register_node(epname, epdef)
+

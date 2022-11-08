@@ -226,3 +226,5 @@ minetest.register_biome({
 	heat_point = 50,
 	humidity_point = 100
 })
+
+

@@ -59,12 +59,12 @@ minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"group:soil"},
 		sidelen = 16,
-		fill_ratio = 0.02,
+		fill_ratio = 0.025,
 		noise_params = {
 			offset = -0.001 + 0.005 * 0.005,
 			scale = 0.001,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 1572,
+			seed = 1420,
 			octaves = 3,
 			persist = 0.7
 		},
