@@ -24,7 +24,8 @@ minetest.register_ore({
 			spread = {x = 5, y = 5, z = 5},
 			seed = -316,
 			octaves = 1,
-			persist = 0.0
+			persist = 0.0,
+			flags = "eased"
 		},
 	})
 
@@ -46,7 +47,30 @@ minetest.register_ore({
 			spread = {x = 7, y = 7, z = 7},
 			seed = -420,
 			octaves = 1,
-			persist = 0.0
+			persist = 0.0,
+			flags = "eased"
+		},
+	})
+	
+minetest.register_ore({
+		ore_type = "blob",
+		ore  = modname.. ":mycelium",
+		wherein = {"nc_terrain:dirt"},
+		biomes = {"rainforest"},
+		clust_scarcity = 16 * 16 * 16,
+		clust_num_ores = 7,
+		clust_size = 13,
+--		y_max = 50,
+--		y_min = -50,
+		noise_threshold = 0.0,
+		noise_params = {
+			offset = 0.5,
+			scale = 1.25,
+			spread = {x = 8, y = 8, z = 8},
+			seed = 46059,
+			octaves = 1,
+			persist = 0.0,
+			flags = "eased"
 		},
 	})
 
@@ -57,17 +81,18 @@ minetest.register_ore({
 		biomes = {"stonewaste", "stoneprairie"},
 		clust_scarcity = 16 * 16 * 16,
 		clust_num_ores = 8,
-		clust_size = 24,
+		clust_size = 12,
 		y_max = 100,
 		y_min = -100,
 		noise_threshold = 0.1,
 		noise_params = {
 			offset = 0.42,
 			scale = 0.45,
-			spread = {x = 32, y = 32, z = 32},
+			spread = {x = 8, y = 8, z = 8},
 			seed = -221,
-			octaves = 1,
-			persist = 0.0
+			octaves = 2,
+			persist = 0.0,
+			flags = "eased"
 		},
 	})
 
@@ -76,7 +101,7 @@ minetest.register_ore({
 		ore  = "nc_terrain:sand",
 		wherein = {"group:soil", "group:sand", "group:gravel"},
 		biomes = {"floodland", "seabed", "stoneprairie"},
-		clust_scarcity = 16 * 16 * 16,
+		clust_scarcity = 32 * 16 * 32,
 		clust_num_ores = 8,
 		clust_size = 12,
 		y_max = 100,
@@ -88,7 +113,8 @@ minetest.register_ore({
 			spread = {x = 24, y = 24, z = 24},
 			seed = 968,
 			octaves = 1,
-			persist = 0.0
+			persist = 0.0,
+			flags = "eased"
 		},
 	})
 
@@ -130,7 +156,8 @@ minetest.register_ore({
 			spread = {x = 7, y = 7, z = 7},
 			seed = 171,
 			octaves = 1,
-			persist = 0.0
+			persist = 0.0,
+			flags = "eased"
 		},
 	})
 	
@@ -155,4 +182,24 @@ minetest.register_ore({
 		},
 	})
 	
+minetest.register_ore({
+		ore_type = "blob",
+		ore  = modname.. ":coquina",
+		wherein = {"group:soil", "group:sand", "group:gravel"},
+		biomes = {"seabed", "stoneprairie"},
+		clust_scarcity = 128 * 16 * 128,
+		clust_num_ores = 4,
+		clust_size = 8,
+		y_max = 16,
+		y_min = -80,
+		noise_threshold = 0.1,
+		noise_params = {
+			offset = 0.36,
+			scale = 0.22,
+			spread = {x = 8, y = 8, z = 8},
+			seed = 56912,
+			octaves = 1,
+			persist = 0.0
+		},
+	})
 

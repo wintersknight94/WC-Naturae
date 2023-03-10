@@ -4,16 +4,16 @@ local minetest, nodecore
 -- LUALOCALS > ---------------------------------------------------------
 local modname = minetest.get_current_modname()
 ------------------------------------------------------------------------
+local umbrella = modname.. "_umbrella.png"
 local fern = "(nc_flora_sedge_color.png^[colorize:darkolivegreen:200)^(nc_terrain_grass_top.png^[mask:nc_lode_mask_molten.png)"
 local ferntile = fern.. "^[mask:" ..modname.. "_fern_mask.png"
-local fernlarge = modname.. "_fern_large.png"
 ------------------------------------------------------------------------
-minetest.register_node(modname .. ":fern", {
-		description = "Fern",
+minetest.register_node(modname .. ":umbrella", {
+		description = "Umbrella Plant",
 		drawtype = 'plantlike',
 		waving = 1,
-		tiles = {fernlarge},
-		visual_scale = 2,
+		tiles = {umbrella},
+		visual_scale = 2.5,
 		inventory_image = ferntile,
 		wield_image = ferntile,
 		sunlight_propagates = true,
@@ -33,21 +33,32 @@ minetest.register_node(modname .. ":fern", {
 		sounds = nodecore.sounds("nc_terrain_swishy"),
 		selection_box = {
 			type = "fixed",
-			fixed = {-6/16, -0.5, -6/16, 6/16, 4/16, 6/16},
+			fixed = { {-0.5, -0.5, -0.5, 0.5, 1.5, 0.5}, },
 		}
 	})
 ------------------------------------------------------------------------
 minetest.register_decoration({
-		label = {modname .. ":fern"},
+		label = {modname .. ":umbrella"},
 		deco_type = "simple",
 		place_on = {"group:soil"},
 		sidelen = 16,
-		fill_ratio = 0.1,
-		biomes = {"forest", "old_forest", "ancient_forest", "rainforest"},
-		y_max = 2000,
-		y_min = -20,
-		decoration = {modname .. ":fern"},
+		fill_ratio = 0.01,
+		biomes = {"rainforest"},
+		y_max = 256,
+		y_min = 1,
+		decoration = {modname .. ":umbrella"},
 		param2 = 10
 	})
 ------------------------------------------------------------------------
-
+minetest.register_decoration({
+		label = {modname .. ":umbrella"},
+		deco_type = "simple",
+		place_on = {"group:soil", "group:sand"},
+		sidelen = 16,
+		fill_ratio = 0.001,
+		biomes = {"tropic"},
+		y_max = 256,
+		y_min = 1,
+		decoration = {modname .. ":umbrella"},
+		param2 = 10
+	})

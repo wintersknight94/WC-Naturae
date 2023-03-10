@@ -17,35 +17,21 @@ local trunk = {
 	".....",
 	".....",
 }
-local bot = {
-	".....",
-	".ebe.",
-	".btb.",
-	".ebe.",
-	".....",
-}
 local low = {
 	".lll.",
+	"llell",
 	"lebel",
-	"lbtbl",
-	"lebel",
+	"llell",
 	".lll.",
 }
 local hi = {
-	".lll.",
-	"llell",
-	"lebel",
-	"llell",
-	".lll.",
-}
-local top = {
 	".....",
 	".lll.",
 	".lll.",
 	".lll.",
 	".....",
 }
-nodecore.talltree_schematic = nodecore.ezschematic(
+nodecore.tropictree_schematic = nodecore.ezschematic(
 	{
 		["."] = {name = "air", prob = 0},
 		r = {name = "nc_tree:root", prob = 255, force_place = true},
@@ -64,11 +50,10 @@ nodecore.talltree_schematic = nodecore.ezschematic(
 		trunk,
 		trunk,
 		trunk,
-		bot,
+		trunk,
+		trunk,
 		low,
-		low,
-		hi,
-		top
+		hi
 	},
 	{
 		yslice_prob = {
@@ -82,8 +67,8 @@ nodecore.talltree_schematic = nodecore.ezschematic(
 			{ypos = 8, prob = 100},
 			{ypos = 9, prob = 100},
 			{ypos = 10, prob = 255},
-			{ypos = 11, prob = 160},
-			{ypos = 12, prob = 160},
+			{ypos = 11, prob = 255},
+			{ypos = 12, prob = 255},
 			{ypos = 13, prob = 255},
 		}
 	}
@@ -91,15 +76,14 @@ nodecore.talltree_schematic = nodecore.ezschematic(
 
 minetest.register_decoration({
 		deco_type = "schematic",
-		place_on = {"group:soil"},
+		place_on = {"group:sand"},
 		sidelen = 16,
-		fill_ratio = 0.02,
-		biomes = {"forest", "thicket", "old_forest", "rainforest"},
+		fill_ratio = 0.0025,
+		biomes = {"tropic"},
 		y_min = 1,
 		y_max = 1000,
-		schematic = nodecore.talltree_schematic,
+		schematic = nodecore.tropictree_schematic,
 		flags = "place_center_x, place_center_z",
 		rotation = "random",
 		replacements = {}
 	})
-	

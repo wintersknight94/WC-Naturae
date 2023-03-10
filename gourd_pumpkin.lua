@@ -46,12 +46,14 @@ minetest.register_node(modname.. ":pumpkin", {
 			{-0.125, 0.3125, -0.125, 0.125, 0.375, 0.125}, -- StemBase
 		}
 	},
+	collision_box = nodecore.fixedbox(),
+	selection_box = nodecore.fixedbox(),
 	sunlight_propagates = true,
 	groups = {
 		stack_as_node = 1,
 		snappy = 1,
 		gourd = 1,
-		[modname .. "_spread"] = 1,
+--		[modname .. "_spread"] = 1,
 		peat_grindable_node = 1
 	},
 	stack_max = 1,
@@ -77,6 +79,8 @@ minetest.register_node(modname.. ":pumpkin_carved", {
 			{-0.125, 0.3125, -0.125, 0.125, 0.375, 0.125}, -- StemBase
 		}
 	},
+	collision_box = nodecore.fixedbox(),
+	selection_box = nodecore.fixedbox(),
 	sunlight_propagates = true,
 	groups = {
 		stack_as_node = 1,
@@ -94,7 +98,7 @@ minetest.register_decoration({
 		place_on = {"group:soil"},
 		sidelen = 16,
 		fill_ratio = 0.00025,
-		biomes = {"grassland", "savanna", "rainforest"},
+		biomes = {"grassland", "stoneprairie", "stonewaste", "rainforest"},
 		y_max = 80,
 		y_min = 2,
 		decoration = {modname .. ":pumpkin"}
@@ -138,10 +142,8 @@ nodecore.register_craft({
 			}
 		},
 		items = {
-			{name = modname..":pumseed", count = 1, scatter = 3},
-			{name = "nc_tree:stick", count = 1, scatter = 3},
-			{name = "nc_flora:rush_dry", count = 1, scatter = 3},
-			{name = "nc_flora:sedge_1", count = 1, scatter = 3},
+			{name = modname..":pumseed", count = 3, scatter = 3},
+			{name = "nc_tree:stick", count = 1, scatter = 3}
 		},
 		itemscatter = 3
 	})
@@ -199,4 +201,34 @@ local epdef = nodecore.underride({
 	}, minetest.registered_items[ldname] or {})
 epdef.groups.soil = nil
 minetest.register_node(epname, epdef)
+
+------------------------------------------------------------------------
+-- ================================================================== --
+local function growparticles(pos, rate, width)
+	nodecore.soaking_particles(pos, rate, 10, width, "nc_tree:leaves_bud")
+end
+
+local sproutcost = 2000
+nodecore.register_soaking_abm({
+		label = "pumpkin sprout",
+		fieldname = "pumseed",
+		nodenames = {modname .. ":pumseed_planted"},
+		interval = 10,
+		arealoaded = 1,
+		soakrate = nodecore.tree_growth_rate,
+		soakcheck = function(data, pos)
+			if data.total >= sproutcost then
+				nodecore.node_sound(pos, "dig")
+				nodecore.set_loud(pos, {name = "nc_terrain:dirt"})
+				local apos = {x = pos.x, y = pos.y + 1, z = pos.z}
+				local anode = minetest.get_node(apos)
+				if anode.name == "air" then
+					nodecore.set_loud(apos,
+						{name = modname .. ":pumpkin", param2 = 1})
+					nodecore.witness(apos, "pumpkin growth")
+				end
+			end
+			return growparticles(pos, data.rate, 0.2)
+		end
+	})
 
