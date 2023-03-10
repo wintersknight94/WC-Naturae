@@ -32,6 +32,7 @@ minetest.register_node(modname .. ":pearl", {
 		sunlight_propagates = true,
 		light_source = 1,
 		walkable = false,
+		floodable = true,
 		groups = {
 			snappy = 1,
 			pebble = 1,

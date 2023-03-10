@@ -29,6 +29,7 @@ minetest.register_node(modname .. ":pebble", {
 		},
 		sunlight_propagates = true,
 		walkable = true,
+		floodable = true,
 		groups = {
 			snappy = 1,
 			pebble = 1,

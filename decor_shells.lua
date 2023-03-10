@@ -36,6 +36,7 @@ minetest.register_node(modname .. ":shell", {
 		},
 		sunlight_propagates = true,
 		walkable = false,
+		floodable = true,
 		groups = {
 			snappy = 1,
 			pebble = 1,
@@ -70,11 +71,9 @@ minetest.register_decoration({
 	place_on = {"nc_terrain:sand"},
 	sidelen = 4,
 	fill_ratio = 0.0075,
-	y_max = 12,
 	flags = "all_floors",
 	biomes = "tropic",
 	decoration = modname ..":shell",
 	rotation = "random",
 })
-
 
