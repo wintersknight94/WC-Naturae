@@ -36,4 +36,9 @@ All features from WintersKnight's original NodeCore Nature mod, plus...
 - Dungeons improved
 	- Merge with vanilla complex dungeons with bricks/concrete/loot
 - Plant fibers more distinguishable from vanilla rushes
+- Pumpkins and Umbrella Plants
+- Better Fern Texture & Scale
+- Tall & Giant Mushroom Variants
+- More Glass/Shell-Tipped Tools
 
+AND MORE!
