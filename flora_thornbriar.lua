@@ -7,17 +7,18 @@ local math_random
 local modname = minetest.get_current_modname()
 ------------------------------------------------------------------------
 local rootname = modname .. ":briar_root"
-local visdirt = "nc_tree:humus_loose"
+local visdirt = "nc_tree:humus"
 local dirt = "nc_terrain:dirt_loose"
 local rootdef = nodecore.underride({
 	description = "Thorny Roots",
 	drawtype = "plantlike_rooted",
+	tiles = {"nc_tree_humus.png"},
 	falling_visual = visdirt,
 	special_tiles = {"nc_tree_tree_side.png^[mask:" ..modname.. "_stem_mask.png"},
 	drop = dirt,
 	no_self_repack = true,
 	groups = {grassable = 0, soil = 1, roots = 1, damage_touch = 1, stack_as_node = 1}
-}, minetest.registered_items[visdirt] or {})
+}, minetest.registered_items[dirt] or {})
 rootdef.groups.humus = nil
 minetest.register_node(rootname, rootdef)
 ------------------------------------------------------------------------
@@ -39,7 +40,7 @@ minetest.register_node(modname .. ":vine_thorny", {
 			peat_grindable_item = 1
 		},
 		node_placement_prediction = "nc_items:stack",
-		place_as_item = true,
+--		place_as_item = true,
 		sounds = nodecore.sounds("nc_terrain_swishy")
 	})
 

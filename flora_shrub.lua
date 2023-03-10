@@ -114,7 +114,7 @@ minetest.register_decoration({
 	place_on = {"group:soil"},
 	sidelen = 16,
 	fill_ratio = 0.001,
-	biomes = {"rainforest", "stoneprairie"},
+	biomes = {"rainforest", "stoneprairie", "stonewaste"},
 	y_min = -20,
 	y_max = 120,
 	schematic = nodecore.shrub_schematic,
