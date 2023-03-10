@@ -10,8 +10,8 @@ nodecore.register_abm({
 	nodenames = {"nc_terrain:gravel"},
 	neighbors = {"nc_terrain:water_flowing"},
 	neighbors_invert = true,
-	interval = 120,
-	chance = 20,
+	interval = 3600,
+	chance = 100,
 	action = function(pos)
 		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
 		if not nodecore.buildable_to(above) then
@@ -25,8 +25,8 @@ nodecore.register_abm({
 	label = "Pearl Formation",
 	nodenames = {"nc_lux:stone"},
 	neighbors = {"group:moist", "group:water"},
-	interval = 120,
-	chance = 20,
+	interval = 900,
+	chance = 100,
 	action = function(pos)
 		local below = {x = pos.x, y = pos.y - 1, z = pos.z}
 		if not nodecore.buildable_to(below) then
@@ -41,8 +41,8 @@ nodecore.register_abm({
 	nodenames = {"nc_terrain:sand"},
 	neighbors = {"nc_terrain:water_flowing"},
 	neighbors_invert = true,
-	interval = 120,
-	chance = 20,
+	interval = 3600,
+	chance = 100,
 	action = function(pos)
 		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
 		if not nodecore.buildable_to(above) then
