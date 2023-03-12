@@ -49,6 +49,7 @@ local function register_shroomtree(suff, desc, light_source, capcolor, stemcolor
 			mushgills = 1
 		},
 		waving = 1,
+		walkable = false,
 		sounds = nodecore.sounds("nc_terrain_swishy"),
 		light_source = light_source
 	})
