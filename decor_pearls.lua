@@ -45,7 +45,7 @@ minetest.register_node(modname .. ":pearl", {
 
 minetest.register_decoration({
 	deco_type = "simple",
-	place_on = {"nc_terrain:stone"},
+	place_on = {"group:stone"},
 	place_offset_y = 0,
 	sidelen = 16,
 	fill_ratio = 0.001,
@@ -58,7 +58,7 @@ minetest.register_decoration({
 
 minetest.register_decoration({
 	deco_type = "simple",
-	place_on = {"nc_terrain:stone"},
+	place_on = {"group:stone"},
 	place_offset_y = 0,
 	sidelen = 16,
 	fill_ratio = 0.005,
@@ -71,7 +71,7 @@ minetest.register_decoration({
 
 minetest.register_decoration({
 	deco_type = "simple",
-	place_on = {"nc_terrain:stone"},
+	place_on = {"group:stone"},
 	place_offset_y = 0,
 	sidelen = 16,
 	fill_ratio = 0.01,
@@ -84,7 +84,7 @@ minetest.register_decoration({
 
 minetest.register_decoration({
 	deco_type = "simple",
-	place_on = {"nc_terrain:stone"},
+	place_on = {"group:stone"},
 	place_offset_y = 0,
 	sidelen = 16,
 	fill_ratio = 0.025,
