@@ -27,6 +27,15 @@ local stem = {
 	".......",
 	".......",
 }
+local capbot = {
+	".......",
+	"..GGG..",
+	".GGGGG.",
+	".GGtGG.",
+	".GGGGG.",
+	"..GGG..",
+	".......",
+}
 local caplow = {
 	"..ccc..",
 	".cgggc.",
@@ -53,6 +62,7 @@ nodecore.bigmushroom_lux_schematic = nodecore.ezschematic(
 		t = {name = mushstem, prob = 255, force_place = true},
 		c = {name = mushcap, prob = 255},
 		g = {name = mushgills, prob = 255},
+		G = {name = mushgills, prob = 100},
 	},
 	{
 		root,
@@ -65,7 +75,7 @@ nodecore.bigmushroom_lux_schematic = nodecore.ezschematic(
 		stem,
 		stem,
 		stem,
-		stem,
+		capbot,
 		caplow,
 		captop
 	},
