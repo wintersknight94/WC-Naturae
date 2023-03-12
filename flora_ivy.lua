@@ -73,14 +73,13 @@ minetest.register_decoration({
 	param2 = 4
 })
 -- ================================================================== --
-minetest.register_abm({
-	label = "ivy climbing",
-	nodenames = {"group:ivy"},
-	interval = 60, --60,
-	chance = 10, --10,
-	action = function(pos)
-
-})
+--minetest.register_abm({
+--	label = "ivy climbing",
+--	nodenames = {"group:ivy"},
+--	interval = 60, --60,
+--	chance = 10, --10,
+--	action = function(pos)
+--})
 
 ------------------------------------------------------------------------
 
