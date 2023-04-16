@@ -13,7 +13,7 @@ minetest.register_node(modname .. ":shell", {
 		inventory_image = "nc_stonework_stone.png^[colorize:pink:100",
 		wield_image = "[combine:16x16:0,2=nc_stonework_stone.png^[colorize:pink:100",
 		wield_scale = {x = 1.25, y = 1.25, z = 1.75},
-		color = pink,
+		color = "pink",
 		paramtype = "light",
 		node_box = {
 		type = "fixed",

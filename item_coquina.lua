@@ -12,7 +12,7 @@ local shellmix = coquina.. "^(nc_fire_ash.png^[mask:nc_concrete_mask.png)"
 minetest.register_node(modname .. ":coquina", {
 	description = "Coquina",
 	tiles = {coquina},
-	color = pink,
+--	color = "pink",
 	groups = {
 		crumbly = 2,
 		coquina = 1

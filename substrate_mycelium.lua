@@ -123,7 +123,7 @@ nodecore.register_soaking_abm({
 -- Shroom Growth Mycelium
 minetest.register_abm({
 	label = "Shroom Growth",
-	nodenames = {group = fungal},
+	nodenames = {groups = {fungal = true}},
 --	nodenames = {modname .. ":mycelium"},
 	interval = 40, --50
 	chance = 12, --10
