@@ -1,0 +1,80 @@
+nc_lode:block_annealed * dwemer_metal_plate_annealed.png
+nc_lode:block_tempered * dwemer_puzzlebox_color.png
+
+nc_lode:tongs_tempered inventory,wield dwemer_tongs_tempered.png
+
+nc_igneous:amalgam * dwemer_amalgam.png
+nc_igneous:amalgam_loose * dwemer_amalgam_loose.png
+
+nc_sponge:sponge_living * dwemer_sponge_living.png
+
+nc_stonework:chip inventory,wield dwemer_stone_chip.png
+
+nc_tree:eggcorn inventory,wield nc_tree_eggcorn.png
+
+nc_exmachina:core * nc_exmachina_core.png
+nc_exmachina:frame sides nc_exmachina_frame.png
+nc_exmachina:frame top nc_exmachina_frame_top.png
+nc_exmachina:frame bottom nc_exmachina_frame_top.png
+
+nc_chess:pawn_terrain_stone inventory,wield dwemer_chess_stone_pawn.png
+nc_chess:rook_terrain_stone inventory,wield dwemer_chess_stone_rook.png
+nc_chess:knight_terrain_stone inventory,wield dwemer_chess_stone_knight.png
+nc_chess:bishop_terrain_stone inventory,wield dwemer_chess_stone_bishop.png
+nc_chess:queen_terrain_stone inventory,wield dwemer_chess_stone_queen.png
+nc_chess:king_terrain_stone inventory,wield dwemer_chess_stone_king.png
+nc_chess:pawn_concrete_coalstone inventory,wield dwemer_chess_tarstone_pawn.png
+nc_chess:rook_concrete_coalstone inventory,wield dwemer_chess_tarstone_rook.png
+nc_chess:knight_concrete_coalstone inventory,wield dwemer_chess_tarstone_knight.png
+nc_chess:bishop_concrete_coalstone inventory,wield dwemer_chess_tarstone_bishop.png
+nc_chess:queen_concrete_coalstone inventory,wield dwemer_chess_tarstone_queen.png
+nc_chess:king_concrete_coalstone inventory,wield dwemer_chess_tarstone_king.png
+nc_chess:pawn_concrete_cloudstone inventory,wield dwemer_chess_cloudstone_pawn.png
+nc_chess:rook_concrete_cloudstone inventory,wield dwemer_chess_cloudstone_rook.png
+nc_chess:knight_concrete_cloudstone inventory,wield dwemer_chess_cloudstone_knight.png
+nc_chess:bishop_concrete_cloudstone inventory,wield dwemer_chess_cloudstone_bishop.png
+nc_chess:queen_concrete_cloudstone inventory,wield dwemer_chess_cloudstone_queen.png
+nc_chess:king_concrete_cloudstone inventory,wield dwemer_chess_cloudstone_king.png
+nc_chess:pawn_concrete_sandstone inventory,wield dwemer_chess_sandstone_pawn.png
+nc_chess:rook_concrete_sandstone inventory,wield dwemer_chess_sandstone_rook.png
+nc_chess:knight_concrete_sandstone inventory,wield dwemer_chess_sandstone_knight.png
+nc_chess:bishop_concrete_sandstone inventory,wield dwemer_chess_sandstone_bishop.png
+nc_chess:queen_concrete_sandstone inventory,wield dwemer_chess_sandstone_queen.png
+nc_chess:king_concrete_sandstone inventory,wield dwemer_chess_sandstone_king.png
+
+
+yctie:lockbox_locked * barrier_locked.png
+
+wc_adamant:adze_admin inventory,wield wc_adamant_adminze.png
+wc_adamant:ore inventory,wield wc_adamant_shard.png
+wc_adamant:shard inventory,wield wc_adamant_shard.png
+wc_adamant:adze_infused inventory,wield dwemer_aetherial_adamant_adze.png
+wc_adamant:tool_pick_infused inventory,wield dwemer_aetherial_adamant_pick.png
+wc_adamant:tool_spade_infused inventory,wield dwemer_aetherial_adamant_spade.png
+wc_adamant:tool_hatchet_infused inventory,wield dwemer_aetherial_adamant_hatchet.png
+wc_adamant:tool_mallet_infused inventory,wield dwemer_aetherial_adamant_mallet.png
+wc_adamant:mace_infused inventory,wield dwemer_aetherial_adamant_mace.png
+
+wc_crystals:adamant_crystal *,inventory dwemer_caged_crystal_adamantite_4.png
+wc_crystals:shroomite_crystal *,inventory dwemer_caged_crystal_shroomite.png
+wc_crystals:lodite_crystal *,inventory dwemer_caged_crystal_lodite.png
+wc_crystals:luxite_crystal *,inventory dwemer_caged_crystal_luxite.png
+
+
+wc_bugs:chrysalis sides dwemer_chrysalis_1.png
+wc_bugs:chrysalis top dwemer_chrysalis_2.png
+wc_bugs:chrysalis bottom dwemer_chrysalis_2.png
+wc_bugs:peatle inventory,wield dwemer_peatle.png
+wc_bugs:prillbug inventory,wield dwemer_prillbug.png
+
+wc_fossil:amber_bug inventory,wield dwemer_amber_bug.png
+
+wc_naturae:shell inventory,wield dwemer_shell_pink.png
+wc_naturae:pumseed inventory,wield wc_naturae_pumseed.png
+wc_naturae:dirt_with_ice * permafrost_alt_1.png
+
+wc_quicksilver:cobble * wc_quicksilver_cinnacobble.png
+wc_quicksilver:cobble_loose * wc_quicksilver_cinnacobble_loose.png
+wc_quicksilver:bricks * wc_quicksilver_bricks.png
+wc_quicksilver:palode * dwemer_palode.png
+wc_quicksilver:cobble_hot * dwemer_inhibited_quicksilver.png
