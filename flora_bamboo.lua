@@ -253,31 +253,31 @@ minetest.register_decoration({
 	})
 end
 ------------------------------------------------------------------------
--- LIGHTING FIX
+-- LIGHTING FIX (no longer necessary)
 
-local lightjobs = {}
-minetest.register_lbm({
-		name = modname .. ":bamboo_lighting",
-		nodenames = {"group:bamboo_living"},
-		action = function(pos)
-			pos = {
-				x = math_floor(pos.x / 16) * 16,
-				y = math_floor(pos.y / 16) * 16,
-				z = math_floor(pos.z / 16) * 16,
-			}
-			lightjobs[minetest.hash_node_position(pos)] = pos
-		end
-	})
-nodecore.register_globalstep(modname .. ":bamboo_lighting", function()
-		if not next(lightjobs) then return end
-		for _, pos in pairs(lightjobs) do
-			local vm = minetest.get_voxel_manip(pos, {
-					x = pos.x + 15,
-					y = pos.y + 15,
-					z = pos.z + 15
-				})
-			vm:write_to_map(true)
-			vm:update_map()
-		end
-		lightjobs = {}
-	end)
+--local lightjobs = {}
+--minetest.register_lbm({
+--		name = modname .. ":bamboo_lighting",
+--		nodenames = {"group:bamboo_living"},
+--		action = function(pos)
+--			pos = {
+--				x = math_floor(pos.x / 16) * 16,
+--				y = math_floor(pos.y / 16) * 16,
+--				z = math_floor(pos.z / 16) * 16,
+--			}
+--			lightjobs[minetest.hash_node_position(pos)] = pos
+--		end
+--	})
+--nodecore.register_globalstep(modname .. ":bamboo_lighting", function()
+--		if not next(lightjobs) then return end
+--		for _, pos in pairs(lightjobs) do
+--			local vm = minetest.get_voxel_manip(pos, {
+--					x = pos.x + 15,
+--					y = pos.y + 15,
+--					z = pos.z + 15
+--				})
+--			vm:write_to_map(true)
+--			vm:update_map()
+--		end
+--		lightjobs = {}
+--	end)

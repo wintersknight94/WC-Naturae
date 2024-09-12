@@ -17,7 +17,8 @@ minetest.register_node(modname .. ":mycelium", {
 			crumbly = 1,
 			soil = 4,
 			fungal = 1,
-			humus = 1,
+			mycelium = 2,
+--			humus = 1,
 			grassable = 1,
 			moist = 1
 		},
@@ -27,6 +28,7 @@ minetest.register_node(modname .. ":mycelium", {
 				crumbly = 1,
 				soil = 5,
 				fungal = 1,
+				mycelium = 1,
 				dirt_loose = 2,
 				falling_repose = 2,
 				grassable = 1
@@ -42,6 +44,7 @@ minetest.register_node(modname .. ":compost", {
 			crumbly = 1,
 			moist = 1,
 			fungal = 1,
+			mushmulch = 1,
 			falling_repose = 1
 		},
 		sounds = nodecore.sounds("nc_terrain_chompy")
@@ -91,32 +94,46 @@ nodecore.register_craft({
 
 -- ================================================================== --
 
--- Mycelium Growth
-local compostcost = 2500
-
-nodecore.register_soaking_abm({
-		label = "fungal compost",
-		fieldname = "compost",
-		nodenames = {modname .. ":compost"},
-		interval = 10,
-		soakrate = nodecore.tree_soil_rate,
-		soakcheck = function(data, pos)
-			if data.total < compostcost then return end
-			minetest.get_meta(pos):from_table({})
-			if math_random(1, 4) == 1 and nodecore.is_full_sun(
-				{x = pos.x, y = pos.y + 1, z = pos.z}) then
-				nodecore.set_loud(pos, {name = modname .. ":mossy_dirt"})
-				return
+minetest.register_abm({
+			label = "fungal composting",
+			nodenames = {"group:mushmulch"},
+			neighbors = {"group:soil"},
+			interval = 120,
+			chance = 10,
+			action = function(pos)
+				nodecore.set_node(pos, {name = modname .. ":mycelium"})
+				nodecore.witness(pos, {
+						"cultivate mycelium from fungal mulch"
+					})
 			end
-			nodecore.set_loud(pos, {name = modname .. ":mycelium"})
-			nodecore.witness(pos, "fungal compost")
-			local found = nodecore.find_nodes_around(pos, {modname .. ":compost"})
-			if #found < 1 then return false end
-			nodecore.soaking_abm_push(nodecore.pickrand(found),
-				"compost", data.total - compostcost)
-			return false
-		end
-	})
+		})
+
+-- Mycelium Growth
+--local compostcost = 2500
+
+--	nodecore.register_soaking_abm({
+--			label = "fungal compost",
+--			fieldname = "compost",
+--			nodenames = {modname .. ":compost"},
+--			interval = 10,
+--			soakrate = nodecore.tree_soil_rate,
+--			soakcheck = function(data, pos)
+--				if data.total < compostcost then return end
+--				minetest.get_meta(pos):from_table({})
+--				if math_random(1, 4) == 1 and nodecore.is_full_sun(
+--					{x = pos.x, y = pos.y + 1, z = pos.z}) then
+--					nodecore.set_loud(pos, {name = modname .. ":mossy_dirt"})
+--					return
+--				end
+--				nodecore.set_loud(pos, {name = modname .. ":mycelium"})
+--				nodecore.witness(pos, "fungal compost")
+--				local found = nodecore.find_nodes_around(pos, {modname .. ":compost"})
+--				if #found < 1 then return false end
+--				nodecore.soaking_abm_push(nodecore.pickrand(found),
+--					"compost", data.total - compostcost)
+--				return false
+--			end
+--		})
 
 -- ================================================================== --
 

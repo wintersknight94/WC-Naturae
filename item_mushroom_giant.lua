@@ -22,6 +22,7 @@ local function register_shroomtree(suff, desc, light_source, capcolor, stemcolor
 		description = desc,
 		tiles = {
 			modname .. "_mushroom_stem_top.png^[colorize:" ..stemcolor,
+			modname .. "_mushroom_stem_top.png^[colorize:" ..stemcolor,
 			modname .. "_mushroom_stem.png^[colorize:" ..stemcolor
 		},
 		groups = {
@@ -30,6 +31,8 @@ local function register_shroomtree(suff, desc, light_source, capcolor, stemcolor
 			fire_fuel = 4,
 			mushblock = 1
 		},
+		paramtype2 = "facedir",
+		on_place = minetest.rotate_node,
 		sounds = nodecore.sounds("nc_terrain_swishy"),
 		light_source = light_source
 	})

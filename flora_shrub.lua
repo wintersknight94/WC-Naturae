@@ -38,7 +38,7 @@ minetest.register_node(modname .. ":shrub", {
 		green = 1,
 		leafy = 1,
 		shrub = 1,
-		[modname .. "_spread"] = 1
+--		[modname .. "_spread"] = 1
 	},
 	alternate_loose = {
 		tiles = {modname .. "_shrub.png^nc_api_loose.png"},
@@ -53,7 +53,7 @@ minetest.register_node(modname .. ":shrub", {
 			stack_as_node = 1,
 			shrub = 1,
 --			decay_to_fibers = 1,
-			[modname .. "_spread"] = 0,
+--			[modname .. "_spread"] = 0,
 			peat_grindable_item = 1
 		}
 	},
@@ -101,7 +101,7 @@ minetest.register_decoration({
 	sidelen = 16,
 	fill_ratio = 0.01,
 	biomes = {"unknown", "grassland", "thicket", "forest", "ancient_forest"},
-	y_min = -20,
+	y_min = -2,
 	y_max = 120,
 	schematic = nodecore.shrub_schematic,
 	flags = "force_placement, place_center_x, place_center_z, all_floors",
@@ -115,7 +115,7 @@ minetest.register_decoration({
 	sidelen = 16,
 	fill_ratio = 0.001,
 	biomes = {"rainforest", "stoneprairie", "stonewaste"},
-	y_min = -20,
+	y_min = -2,
 	y_max = 120,
 	schematic = nodecore.shrub_schematic,
 	flags = "force_placement, place_center_x, place_center_z, all_floors",

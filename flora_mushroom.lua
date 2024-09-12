@@ -4,7 +4,7 @@ local minetest, nodecore
 -- LUALOCALS > ---------------------------------------------------------
 local modname = minetest.get_current_modname()
 -- ================================================================== --
-local function register_shroom(suff, desc, light_source,
+local function register_shroom(suff, desc, light_source, growlit,
 		ymin, ymax, offset, scale, seed,
 		place, biome)
 	minetest.register_node(modname .. ":mushroom" .. suff, {
@@ -31,7 +31,7 @@ local function register_shroom(suff, desc, light_source,
 				type = "fixed",
 				fixed = {-6/16, -0.5, -6/16, 6/16, 4/16, 6/16},
 			},
-			[modname .. "_spread_max_light"] = 8
+			[modname .. "_spread_max_light"] = growlit
 		})
 ------------------------------------------------------------------------
 	minetest.register_node(modname .. ":mushroom_tall" .. suff, {
@@ -52,14 +52,14 @@ local function register_shroom(suff, desc, light_source,
 			flammable = 1,
 			attached_node = 1,
 			mushroom_tall = 1,
-			[modname .. "_spread"] = 1
+--			[modname .. "_spread"] = 1
 		},
 		sounds = nodecore.sounds("nc_terrain_swishy"),
 --		selection_box = {
 --			type = "fixed",
 --			fixed = {-6/16, -0.5, -6/16, 6/16, 4/16, 6/16},
 --		},
-		[modname .. "_spread_max_light"] = 8,
+--		[modname .. "_spread_max_light"] = 8,
 --		drop = modname.. ":mushroom" ..suff.. " 2",
 		on_dig = function(pos)
 			local yield = math.random(0,4)
@@ -102,13 +102,13 @@ local function register_shroom(suff, desc, light_source,
 		})
 end
 -- ================================================================== --
----------------suff,	desc,	light_source,   ymin, 	ymax,	offset, 	scale, 	seed,	 place, 			biome-----
+---------------suff,		desc,		light_source,   growlit,	ymin, 	ymax,	offset, 	scale, 	seed,	 place, 	biome-----
 
-register_shroom("", 	"Mushroom",		nil,	 -10, 	200,		-0.01, 	0.1, 	42, 	{"group:soil", "group:mud", "group:fungal", "group:log"}, {"floodland", "thicket", "forest", "old_forest", "ancient_forest", "mudflat", "rainforest"})
+register_shroom("", 	"Mushroom",				nil,	8,	 -10, 	200,	-0.01, 	0.1, 	42, 	{"group:soil", "group:mud", "group:fungal", "group:log"}, {"floodland", "thicket", "forest", "old_forest", "ancient_forest", "mudflat", "rainforest"})
 	
-register_shroom("_glow",	"Glowing Mushroom",	2, 	-400, 	1, 		-0.01, 	0.1, 	94, 	{"group:soil", "group:mud", "group:log", "group:crumbly", "group:cobble"}, {""})
+register_shroom("_glow",	"Glowing Mushroom",	2,		6, 	-400, 	1, 		-0.01, 	0.1, 	94, 	{"group:soil", "group:mud", "group:log", "group:crumbly", "group:cobble"}, {""})
 	
-register_shroom("_lux",	"Luxaeterna",		4, 	-1000,   -100, 	0.72, 	0.1, 	69, 	{"group:soil", "group:mud", "group:crumbly", "group:cobble"}, {""})
+register_shroom("_lux",	"Luxaeterna",			4,		4,	-1000,   -100, 	0.72, 	0.1, 	69, 	{"group:soil", "group:mud", "group:crumbly", "group:cobble"}, {""})
 -- ================================================================== --
 minetest.register_decoration({
 		label = modname .. ":rainforest_glowshroom",

@@ -104,7 +104,7 @@ minetest.register_abm({
 		neighbors = {modname.. ":grass_with_frost"},
 		neighbors_invert = true,
 		interval = 300,
-		chance = 50,
+		chance = 64,
 		action = function(pos)
 			local above = {x = pos.x, y = pos.y + 1, z = pos.z}
 			if not can_grass_grow_under(above) then return end
@@ -112,3 +112,14 @@ minetest.register_abm({
 		end
 	})
 -- ================================================================== --
+minetest.register_abm({
+		label = "frostgrass decay",
+		nodenames = {modname.. ":grass_with_frost"},
+		interval = 12,
+		chance = 64,
+		action = function(pos)
+			local above = {x = pos.x, y = pos.y + 1, z = pos.z}
+			if can_grass_grow_under(above) ~= false then return end
+			return minetest.set_node(pos, {name = modname .. ":dirt_with_ice"})
+		end
+	})

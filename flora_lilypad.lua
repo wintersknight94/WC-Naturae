@@ -32,6 +32,7 @@ minetest.register_node(modname .. ":lilypad", {
 			fixed = {-7/16, -0.5, -7/16, 7/16, -15/32, 7/16}
 		},
 --		drop = modname .. ":plant_fibers"
+		on_place = minetest.rotate_node
 	})
 	
 minetest.register_decoration({
@@ -75,7 +76,7 @@ minetest.register_abm({
 		nodenames = {modname .. ":lilypad"},
 		neighbors = {"group:water"},
 		interval = 120,
-		chance = 20,
+		chance = 60,
 		action = function(pos)
 			if lilycheck(pos) then return end
 			local gro = {x = pos.x + math_random(-1, 1), y = pos.y + math_random(-1, 1), z = pos.z + math_random(-1, 1)}
@@ -117,7 +118,9 @@ minetest.register_node(modname .. ":mudlily", {
 			type = "fixed",
 			fixed = {-7/16, -0.5, -7/16, 7/16, -15/32, 7/16}
 		},
-		drop = modname .. ":lilypad"
+		drop = modname .. ":lilypad",
+				paramtype2 = "facedir",
+		on_place = minetest.rotate_node
 	})
 	
 minetest.register_decoration({
