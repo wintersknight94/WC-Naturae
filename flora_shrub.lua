@@ -126,10 +126,10 @@ minetest.register_decoration({
 ------------------------------------------------------------------------
 minetest.register_abm({
 	label = "Shrub Rerooting",
-	nodenames = {modname .. ":shrub_loose"},
+	nodenames = {"group:shrub"},
 	neighbors = {"group:soil"},
-	interval = 20,
-	chance = 10,
+	interval = 60,
+	chance = 20,
 	action = function(pos)
 		local up = {x = pos.x, y = pos.y + 1, z = pos.z}
 		local down = {x = pos.x, y = pos.y - 1; z = pos.z}

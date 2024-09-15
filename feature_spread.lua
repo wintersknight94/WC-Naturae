@@ -27,8 +27,8 @@ end
 minetest.register_abm({
 		label = "nature standard spreading",
 		nodenames = {"group:" .. modname .. "_spread"},
-		interval = 12,
-		chance = 10,
+		interval = 120,
+		chance = 20,
 		action = function(pos, node)
 			if not fertile(pos) then return end
 			local gro = {
