@@ -1,12 +1,16 @@
 -- LUALOCALS < ---------------------------------------------------------
-local include
-    = include
+local include, minetest, nodecore
+    = include, minetest, nodecore
 -- LUALOCALS > ---------------------------------------------------------
+local modname = minetest.get_current_modname()
+------------------------------------------------------------------------
 
 include("substrate_mycelium")
 include("substrate_muck")
---include("substrate_clay")
-include("substrate_frost")
+
+if minetest.settings:get_bool(modname .. ".frost", true) then
+	include("substrate_frost")
+end
 
 include("item_fiber")
 include("item_thatch")
@@ -19,7 +23,9 @@ include("feature_decay")
 include("feature_dungeon")
 include("feature_spread")
 include("feature_mushgrowth")
-include("feature_thaw")
+if minetest.settings:get_bool(modname .. ".frost", true) then
+	include("feature_thaw")
+end
 
 include("decor_pebbles")
 include("decor_shells")

@@ -12,24 +12,26 @@ minetest.unregister_biome("unknown")
 	-- Used Voronoi Diagram For Better Biome Pacement
 -- ================================================================== --
  -- Cold & Dry
-minetest.register_biome({	-- Cold Desert
-	name = "stonewaste", --"tundra",
-	node_top = modname.. ":grass_with_frost",
-	depth_top = 1,
-	node_filler = modname.. ":dirt_with_ice",
-	depth_filler = 3,
-	node_water_top = modname.. ":ice",
-	depth_water_top = 2,
-	node_river_water = modname.. ":ice",
-	node_riverbed = "nc_terrain:gravel",
-	depth_riverbed = 3,
-	y_min = -12,
-	y_max = 300,
-	vertical_blend = 16,
-	horizontal_blend = 16,
-	heat_point = 0,
-	humidity_point = 0,
-})
+if minetest.settings:get_bool(modname .. ".frost", true) then
+	minetest.register_biome({	-- Cold Desert
+		name = "stonewaste", --"tundra",
+		node_top = modname.. ":grass_with_frost",
+		depth_top = 1,
+		node_filler = modname.. ":dirt_with_ice",
+		depth_filler = 3,
+		node_water_top = modname.. ":ice",
+		depth_water_top = 2,
+		node_river_water = modname.. ":ice",
+		node_riverbed = "nc_terrain:gravel",
+		depth_riverbed = 3,
+		y_min = -12,
+		y_max = 300,
+		vertical_blend = 16,
+		horizontal_blend = 16,
+		heat_point = 0,
+		humidity_point = 0,
+	})
+end
  -- Hot & Dry
 minetest.register_biome({	-- Hot Desert
 	name = "dune",

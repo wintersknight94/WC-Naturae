@@ -1,0 +1,3 @@
+# If enabled, adds various frosted/frozen nodes, water freezing mechanics, and other cold-related features
+# Highly Experimental, use at own risk
+wc_naturae.frost (Frost Mechanics) bool false
