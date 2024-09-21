@@ -6,7 +6,7 @@ local modname = minetest.get_current_modname()
 -- ================================================== --
 minetest.register_abm({
 		label = "log decay",
-		interval = 100,
+		interval = 300,
 		chance = 20,
 		nodenames = {"nc_tree:log"},
 		neighbors = {"group:water","group:fungal"},

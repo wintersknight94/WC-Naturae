@@ -1,3 +1,14 @@
+# If enabled, changes the 'gravelled' to a proper 'stone-tipped' adze,
+# changing the recipe and increasing durability to match other stone tools.
+wc_naturae.stoneadze (Stone-Tipped Adze) bool true
+
+# If enabled, new shells, pebbles, and cave pearls will slowly generate under certain conditions.
+wc_naturae.stonewash (Renewable Pebbles & Shells) bool true
+
+# Experimental Feature - Use At Own Risk
+# If enabled, adds the WIP 'Ivy' & possibly some vines.
+wc_naturae.ivy (Ivy & Vines) bool false
+
+# Experimental Feature - Use At Own Risk
 # If enabled, adds various frosted/frozen nodes, water freezing mechanics, and other cold-related features
-# Highly Experimental, use at own risk
 wc_naturae.frost (Frost Mechanics) bool false

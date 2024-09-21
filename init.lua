@@ -48,7 +48,6 @@ include("flora_bamboo")
 include("flora_fern")
 include("flora_flower")
 include("flora_grass")
-include("flora_ivy")
 include("flora_lilypad")
 include("flora_mossy")
 include("flora_mushroom")
@@ -57,11 +56,20 @@ include("flora_shrub")
 include("flora_starflower")
 include("flora_thornbriar")
 include("flora_umbrella")
+if minetest.settings:get_bool(modname .. ".ivy", true) then
+	include("flora_ivy")
+end
 --include("flora_sporebloom")
 
-include("craft_adjust")
+if minetest.settings:get_bool(modname .. ".stoneadze", true) then
+	include("craft_adjust")
+end
+
 include("tools_glass")
 include("tools_shell")
-include("postgen")
+
+if minetest.settings:get_bool(modname .. ".stonewash", true) then
+	include("postgen")
+end
 
 include("conversion")
