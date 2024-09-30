@@ -109,17 +109,40 @@ minetest.register_node(modname .. ":bamboo_dead_" ..size, {
 		sounds = nodecore.sounds("nc_tree_sticky")
 	})
 ------------------------------------------------------------------------
+--nodecore.register_aism({
+--	label = "bamboo convert",
+--	interval = 1,
+--	chance = 1,
+--	itemnames = {modname .. ":bamboo_living_" ..size},
+--	action = function(stack)
+--		stack:set_name(modname .. ":bamboo_dead_" ..size)
+--		return stack
+--	end
+--})
 nodecore.register_aism({
-		label = "bamboo convert",
+		label = "bamboo stack dry",
 		interval = 1,
-		chance = 1,
-		itemnames = {modname .. ":bamboo_living_" ..size},
-		action = function(stack)
-			stack:set_name(modname .. ":bamboo_dead_" ..size)
+		chance = 20,
+		arealoaded = 2,
+		itemnames = {modname.. ":bamboo_living_" ..size},
+		action = function(stack, data)
+			if data.toteslot then return end
+			if data.player and data.list then
+				local inv = data.player:get_inventory()
+				for i = 1, inv:get_size(data.list) do
+					local item = inv:get_stack(data.list, i):get_name()
+					if minetest.get_item_group(item, "moist") > 0 then return end
+				end
+			end
+			if #nodecore.find_nodes_around(data.pos, "group:moist", 2) > 0 then return end
+			nodecore.sound_play("nc_tree_sticky", {pos = data.pos})
+			local taken = stack:take_item(1)
+			taken:set_name(modname .. ":bamboo_dead_" ..size)
+			if data.inv then taken = data.inv:add_item("main", taken) end
+			if not taken:is_empty() then nodecore.item_eject(data.pos, taken) end
 			return stack
 		end
-	})
-	
+	})	
 end
 ------------------------------------------------------------------------
 bamboo("Young",		"Thin",		1,	bamboo_nodebox_0)	--
