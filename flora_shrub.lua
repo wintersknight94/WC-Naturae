@@ -168,13 +168,37 @@ minetest.register_abm({
 		end
 	end,
 	})
+--nodecore.register_aism({
+--	label = "shrub item dying",
+--	interval = 20,
+--	chance = 10,
+--	itemnames = {modname .. ":shrub", modname.. ":shrub_loose"},
+--	action = function(stack)
+--		stack:set_name("nc_tree:leaves_loose")
+--		return stack
+--	end
+--})
 nodecore.register_aism({
-	label = "shrub item dying",
-	interval = 20,
-	chance = 10,
-	itemnames = {modname .. ":shrub", modname.. ":shrub_loose"},
-	action = function(stack)
-		stack:set_name("nc_tree:leaves_loose")
+	label = "shrub stack die",
+	interval = 1,
+	chance = 25,
+	arealoaded = 2,
+	itemnames = {modname .. ":shrub_loose"},
+	action = function(stack, data)
+		if data.toteslot then return end
+		if data.player and data.list then
+			local inv = data.player:get_inventory()
+			for i = 1, inv:get_size(data.list) do
+				local item = inv:get_stack(data.list, i):get_name()
+				if minetest.get_item_group(item, "moist") > 0 then return end
+			end
+		end
+		if #nodecore.find_nodes_around(data.pos, "group:moist", 2) > 0 then return end
+		nodecore.sound_play("nc_terrain_swishy", {pos = data.pos})
+		local taken = stack:take_item(1)
+		taken:set_name("nc_tree:leaves_loose")
+		if data.inv then taken = data.inv:add_item("main", taken) end
+		if not taken:is_empty() then nodecore.item_eject(data.pos, taken) end
 		return stack
 	end
 })
