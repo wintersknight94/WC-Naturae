@@ -60,7 +60,7 @@ nodecore.register_craft({
 		indexkeys = {"nc_stonework:chip"},
 		nodes = {
 			{
-				match = {name = "nc_terrain:chip", count = 1},
+				match = {name = "nc_stonework:chip", count = 1},
 				replace = modname.. ":pebble"
 			}
 		},
