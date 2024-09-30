@@ -54,4 +54,15 @@ minetest.register_decoration({
     rotation = "random",
 })
 
-
+nodecore.register_craft({
+		label = "reset chip to pebble",
+		action = "pummel",
+		indexkeys = {"nc_stonework:chip"},
+		nodes = {
+			{
+				match = {name = "nc_terrain:chip", count = 1},
+				replace = modname.. ":pebble"
+			}
+		},
+		toolgroups = {thumpy = 1}
+	})
