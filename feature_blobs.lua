@@ -32,7 +32,7 @@ minetest.register_ore({
 
 minetest.register_ore({
 		ore_type = "blob",
-		ore  = modname.. ":mycelium",
+		ore  = "wc_fungi:mycelium_1",
 		wherein = {"group:soil"},
 		biomes = {"old_forest", "ancient_forest", "thicket", "mudflat", "rainforest"},
 		clust_scarcity = 32 * 32 * 32,
@@ -54,7 +54,7 @@ minetest.register_ore({
 	
 minetest.register_ore({
 		ore_type = "blob",
-		ore  = modname.. ":mycelium",
+		ore  = "wc_fungi:mycelium_3",
 		wherein = {"nc_terrain:dirt"},
 		biomes = {"rainforest"},
 		clust_scarcity = 16 * 16 * 16,

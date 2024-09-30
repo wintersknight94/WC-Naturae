@@ -56,3 +56,7 @@ if not minetest.settings:get_bool(modname .. ".frost", true) then
 	minetest.register_alias(modname.. ":dirt_with_ice",				"nc_terrain:dirt")
 	minetest.register_alias(modname.. ":grass_with_frost",			"nc_terrain:dirt_with_grass")
 end
+
+if not minetest.settings:get_bool(modname .. ".ivy", true) then
+	minetest.register_alias(modname.. ":ivy",						modname.. ":fern")
+end

@@ -5,7 +5,7 @@ local include, minetest, nodecore
 local modname = minetest.get_current_modname()
 ------------------------------------------------------------------------
 
-include("substrate_mycelium")
+--include("substrate_mycelium")		--moved to wc_fungi
 include("substrate_muck")
 
 if minetest.settings:get_bool(modname .. ".frost", true) then
@@ -15,14 +15,14 @@ end
 include("item_fiber")
 include("item_thatch")
 include("item_coquina")
-include("item_mushroom_giant")
+--include("item_mushroom_giant")	--moved to wc_fungi
 
 include("feature_biomes")
 include("feature_blobs")
-include("feature_decay")
+--include("feature_decay")			--moved to wc_fungi
 include("feature_dungeon")
 include("feature_spread")
-include("feature_mushgrowth")
+--include("feature_mushgrowth")		--moved to wc_fungi
 if minetest.settings:get_bool(modname .. ".frost", true) then
 	include("feature_thaw")
 end
@@ -37,6 +37,7 @@ include("decor_tree_grand")
 include("decor_tree_tall")
 include("decor_tree_tropic")
 include("decor_deadshrub")
+include("decor_mushrooms")
 include("decor_bigmushroom")
 include("decor_bigmushroom_glow")
 include("decor_bigmushroom_lux")
@@ -50,7 +51,7 @@ include("flora_flower")
 include("flora_grass")
 include("flora_lilypad")
 include("flora_mossy")
-include("flora_mushroom")
+--include("flora_mushroom")		--moved to wc_fungi
 include("flora_reed")
 include("flora_shrub")
 include("flora_starflower")
@@ -59,7 +60,7 @@ include("flora_umbrella")
 if minetest.settings:get_bool(modname .. ".ivy", true) then
 	include("flora_ivy")
 end
---include("flora_sporebloom")
+--include("flora_sporebloom")		
 
 if minetest.settings:get_bool(modname .. ".stoneadze", true) then
 	include("craft_adjust")

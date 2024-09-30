@@ -4,10 +4,11 @@ local minetest, nodecore
 -- LUALOCALS > ---------------------------------------------------------
 local modname = minetest.get_current_modname()
 
-local mycelium = modname.. ":mycelium"
-local mushstem = modname.. ":mushroom_stem"
-local mushcap = modname.. ":mushroom_cap"
-local mushgills = modname.. ":mushroom_gills"
+local mycelium1	= "wc_fungi:mycelium_1"
+local mycelium2	= "wc_fungi:mycelium_2"
+local mushstem	= "wc_fungi:mushroom_stalk"
+local mushcap	= "wc_fungi:mushroom_cap"
+local mushgills	= "wc_fungi:mushroom_gills"
 
 local root = {
 	".......",
@@ -57,8 +58,8 @@ local caphi = {
 nodecore.bigmushroom_schematic = nodecore.ezschematic(
 	{
 		["."] = {name = "air", prob = 0},
-		R = {name = mycelium, prob = 255, force_place = true},
-		r = {name = mycelium, prob = 100, force_place = true},
+		R = {name = mycelium2, prob = 255, force_place = true},
+		r = {name = mycelium1, prob = 100, force_place = true},
 		t = {name = mushstem, prob = 255, force_place = true},
 		c = {name = mushcap, prob = 255},
 		g = {name = mushgills, prob = 255},
