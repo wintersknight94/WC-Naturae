@@ -15,7 +15,9 @@ minetest.register_node(modname .. ":coquina", {
 --	color = "pink",
 	groups = {
 		crumbly = 2,
-		coquina = 1
+		coquina = 1,
+		falling_node = 1,
+		falling_repose = 2,
 	},
 	crush_damage = 2,
 	sounds = nodecore.sounds("nc_terrain_chompy")
