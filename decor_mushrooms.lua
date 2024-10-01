@@ -50,8 +50,8 @@ register_shroom("_glow",	-400, 	1, 		-0.01, 	0.1, 	941, 	{"group:soil", "group:m
 	
 register_shroom("_lux",		-1000,   -100, 	0.72, 	0.1, 	692, 	{"group:soil", "group:mud", "group:crumbly", "group:cobble"}, {""})
 
-if minetest.settings:get_bool(modname .. ".extrashrooms", true) then
-	register_shroom("_honey",	-64,   64, 	-0.12, 	0.1, 	213, 	{"group:soil", "group:log"}, {"floodland", "thicket", "forest", "old_forest", "ancient_forest", "mudflat"})
+if minetest.settings:get_bool("wc_fungi.extrashrooms", true) then
+	register_shroom("_honey",	-64,   64, 	-0.01, 	0.1, 	213, 	{"group:soil", "group:log"}, {"floodland", "thicket", "forest", "old_forest", "ancient_forest", "mudflat"})
 end
 -- ================================================================== --
 minetest.register_decoration({
