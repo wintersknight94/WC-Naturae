@@ -32,7 +32,7 @@ minetest.register_node(modname .. ":starflower", {
 			fixed = {-6/16, -0.5, -6/16, 6/16, 4/16, 6/16},
 		},
 	})
-inetest.register_node(modname .. ":starflower_dead", {
+minetest.register_node(modname .. ":starflower_dead", {
 		description = "Wilted Pinnacle Flower",
 		drawtype = 'plantlike',
 		waving = 1,
@@ -77,7 +77,7 @@ nodecore.register_aism({
 		if #nodecore.find_nodes_around(data.pos, "group:moist", 2) > 0 then return end
 		nodecore.sound_play("nc_terrain_swishy", {pos = data.pos})
 		local taken = stack:take_item(1)
-		taken:set_name(modname .. ":starflower_dead)
+		taken:set_name(modname .. ":starflower_dead")
 		if data.inv then taken = data.inv:add_item("main", taken) end
 		if not taken:is_empty() then nodecore.item_eject(data.pos, taken) end
 		return stack
