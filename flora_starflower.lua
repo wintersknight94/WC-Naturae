@@ -4,6 +4,7 @@ local minetest, nodecore
 -- LUALOCALS > ---------------------------------------------------------
 local modname = minetest.get_current_modname()
 local starflower = "(nc_flora_flower_color.png^[mask:" ..modname.. "_starstem_mask.png)^" ..modname.. "_starflower.png"
+local deadflower = "(nc_flora_flower_color_dry.png^[mask:" ..modname.. "_starstem_mask.png)^(" ..modname.. "_starflower.png^[colorize:GREY:240)"
 ------------------------------------------------------------------------
 minetest.register_node(modname .. ":starflower", {
 		description = "Pinnacle Flower",
@@ -16,7 +17,8 @@ minetest.register_node(modname .. ":starflower", {
 		paramtype = 'light',
 		paramtype2 = "meshoptions",
 		place_param2 = 10,
-		light_source = 7,
+		light_source = 5,
+		glow = 1,
 		walkable = false,
 		groups = {
 			snappy = 1,
@@ -43,8 +45,8 @@ minetest.register_node(modname .. ":starflower_dead", {
 		paramtype = 'light',
 		paramtype2 = "meshoptions",
 		place_param2 = 10,
-		light_source = 7,
 		walkable = false,
+		floodable = true,
 		groups = {
 			snappy = 1,
 			flora_dry = 1,
@@ -57,6 +59,7 @@ minetest.register_node(modname .. ":starflower_dead", {
 			type = "fixed",
 			fixed = {-6/16, -0.5, -6/16, 6/16, 4/16, 6/16},
 		},
+		drop_in_place = "air"
 	})
 ------------------------------------------------------------------------
 nodecore.register_aism({
