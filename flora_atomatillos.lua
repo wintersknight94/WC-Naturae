@@ -114,6 +114,7 @@ minetest.register_abm({
 			end
 	end,
 })
+------------------------------------------------------------------------
 -- ================================================================== --
 -- ================================================================== --
 local stemroot = {
@@ -131,11 +132,11 @@ local shrubbery = {
 	".....",
 }
 ------------------------------------------------------------------------
-nodecore.shrub_schematic = nodecore.ezschematic(
+nodecore.bush_schematic = nodecore.ezschematic(
 	{
 		["."] = {name = "air", prob = 0},
-		r = {name = modname.. ":shrub_root", prob = 255},
-		s = {name = modname.. ":shrub", prob = 200},
+		r = {name = modname.. ":atomatillo_root", prob = 255},
+		s = {name = modname.. ":atomatillo_bush_0", prob = 200},
 		
 	},
 	{
@@ -150,6 +151,20 @@ nodecore.shrub_schematic = nodecore.ezschematic(
 	}
 )
 -- ================================================================== --
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = {"group:soil"},
+	sidelen = 16,
+	fill_ratio = 0.0001,
+	biomes = {"unknown", "grassland", "thicket", "rainforest", "stoneprairie", "stonewaste"},
+	y_min = -32,
+	y_max = 128,
+	schematic = nodecore.bush_schematic,
+	flags = "force_placement, place_center_x, place_center_z, all_floors",
+--	place_offset_y = -1,
+--	rotation = "random",
+	replacements = {},
+})
 -- ================================================================== --
 -- ================================================================== --
 -- ================================================================== --
