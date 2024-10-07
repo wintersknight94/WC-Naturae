@@ -159,7 +159,7 @@ minetest.register_abm({
 		label = "bamboo spreading",
 		nodenames = {"group:bamboo_living"},
 		neighbors = {"group:water","group:moist"},
-		interval = 120,
+		interval = 300,
 		chance = 20,
 		action = function(pos)
 			if pos.y >= 50 then return end
@@ -218,8 +218,8 @@ for n = 1, 3 do
 	minetest.register_abm({
 		label = "bamboo aging " ..n,
 		nodenames = {modname .. ":bamboo_living_" ..n},
-		interval = 3600, 	--900,
-		chance = 1, 	--10,
+		interval = 9000,
+		chance = 1,
 		action = function(pos)
 			local up = {x = pos.x, y = pos.y + 1, z = pos.z}
 			local down = {x = pos.x, y = pos.y - 1; z = pos.z}
