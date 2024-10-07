@@ -20,7 +20,13 @@ minetest.register_node(modname .. ":lilypad", {
 		walkable = false,
 		floodable = true,
 --		silktouch = false,
-		groups = {snappy = 1, flora = 1, flammable = 3, peat_grindable_item = 1,},
+		groups = {
+			snappy = 1,
+			flora = 1,
+			weavable = 1,
+			flammable = 3,
+			peat_grindable_item = 1,
+		},
 		sounds = nodecore.sounds("nc_terrain_swishy"),
 		node_placement_prediction = "",
 		node_box = {

@@ -24,6 +24,7 @@ minetest.register_node(modname .. ":fern", {
 		groups = {
 			snappy = 1,
 			flora = 1,
+			weavable = 1,
 			flammable = 2,
 			attached_node = 1,
 			stack_as_node = 1,
