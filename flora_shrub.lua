@@ -145,16 +145,24 @@ minetest.register_abm({
 	label = "Shrubroot Regrowing",
 	nodenames = {modname .. ":shrub_root"},
 	neighbors = {"group:soil", "group:moist", "group:water"},
-	interval = 120,
-	chance = 20,
-	action = function(pos)
-		local up = {x = pos.x, y = pos.y + 1, z = pos.z}
-		local down = {x = pos.x, y = pos.y - 1; z = pos.z}
-		local upname = minetest.get_node(up).name
-			if upname == "air" then
-				minetest.set_node(up,{name = modname .. ":shrub"})
-		end
-	end,
+	interval = 1,
+	chance = 2,
+	action = function(pos, node)
+		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
+		local below = {x = pos.x, y = pos.y - 1; z = pos.z}
+		local anode = minetest.get_node(above)
+		local bnode = minetest.get_node(below)
+			if not nodecore.air_equivalent(anode) then
+				return
+			end
+--			if bnode.name == "group:lux_cobble" then
+			if minetest.get_item_group(bnode.name, "lux_cobble") == 1 then
+				minetest.set_node(pos,{name = modname .. ":atomatillo_root"})
+				minetest.set_node(above,{name = modname .. ":atomatillo_bush_0"})
+			else	
+				minetest.set_node(above,{name = modname .. ":shrub"})
+			end
+	end
 })
 ------------------------------------------------------------------------
 minetest.register_abm({
