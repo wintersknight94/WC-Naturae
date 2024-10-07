@@ -84,6 +84,7 @@ minetest.register_node(modname .. ":thornbriar", {
 				stack_as_node = 1,
 				damage_touch = 0,
 				thorny = 1,
+				peat_grindable_item = 1,
 				[modname .. "_spread"] = 0,
 			}
 		},
