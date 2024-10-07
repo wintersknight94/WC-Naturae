@@ -41,7 +41,7 @@ minetest.register_node(modname .. ":muck", {
 			crumbly = 1,
 			falling_repose = 1,
 			slippery = 4,
-			soil = 1
+			soil = 2
 		},
 		sounds = nodecore.sounds("nc_terrain_chompy")
 	})
@@ -74,8 +74,8 @@ nodecore.register_craft({
 
 nodecore.register_aism({
 		label = "muck stack sun dry",
-		interval = 1,
-		chance = 40,
+		interval = 20,
+		chance = 20,
 		itemnames = {modname .. ":muck"},
 		action = function(stack, data)
 			if data.player and (data.list ~= "main"
