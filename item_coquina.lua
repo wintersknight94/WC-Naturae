@@ -17,9 +17,17 @@ minetest.register_node(modname .. ":coquina", {
 		crumbly = 2,
 		coquina = 1,
 		falling_node = 1,
-		falling_repose = 2,
 	},
 	crush_damage = 2,
+	alternate_loose = {
+		tiles = {"(" ..coquina.. ")^nc_api_loose.png"},
+		groups = {
+			crumbly = 1,
+			coquina = 1,
+			falling_node = 1,
+			falling_repose = 1,
+		}
+	},
 	sounds = nodecore.sounds("nc_terrain_chompy")
 })
 ------------------------------------------------------------------------
