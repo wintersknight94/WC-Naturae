@@ -12,6 +12,7 @@ if minetest.settings:get_bool(modname .. ".frost", true) then
 	include("substrate_frost")
 end
 
+include("item_folded")
 include("item_fiber")
 include("item_thatch")
 include("item_coquina")
@@ -57,6 +58,7 @@ include("flora_shrub")
 include("flora_starflower")
 include("flora_thornbriar")
 include("flora_umbrella")
+include("flora_atomatillos")
 if minetest.settings:get_bool(modname .. ".ivy", true) then
 	include("flora_ivy")
 end
