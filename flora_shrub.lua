@@ -145,8 +145,8 @@ minetest.register_abm({
 	label = "Shrubroot Regrowing",
 	nodenames = {modname .. ":shrub_root"},
 	neighbors = {"group:soil", "group:moist", "group:water"},
-	interval = 1,
-	chance = 2,
+	interval = 120,
+	chance = 20,
 	action = function(pos, node)
 		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
 		local below = {x = pos.x, y = pos.y - 1; z = pos.z}
