@@ -57,6 +57,7 @@ minetest.register_decoration({
 nodecore.register_craft({
 		label = "reset chip to pebble",
 		action = "pummel",
+		priority = -1,
 		indexkeys = {"nc_stonework:chip"},
 		nodes = {
 			{
