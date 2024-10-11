@@ -5,6 +5,8 @@ local math_random
     = math.random
 -- LUALOCALS > ---------------------------------------------------------
 local modname = minetest.get_current_modname()
+local diag = 2 ^ 0.5 / 32
+-- ================================================================== --
 -- ================================================================== --
 minetest.register_node(modname.. ":atomatillo", {
 	description = "Atomatillo",
@@ -31,21 +33,32 @@ minetest.register_node(modname.. ":atomatillo", {
 	sounds = nodecore.sounds("nc_tree_corny"),
 })
 ------------------------------------------------------------------------
-local rootname = modname .. ":atomatillo_root"
-local visdirt = "nc_tree:humus"
-local dirt = "nc_terrain:dirt_loose"
-local rootdef = nodecore.underride({
-	description = "Blastbramble",
+
+minetest.register_node(modname .. ":atomatillo_root", {
+	description = "Blastbramble Roots",
+	selection_box = nodecore.fixedbox(
+		{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+		{-5 * diag, 0.5, -5 * diag, 5 * diag, 18/16, 5 * diag}
+	),
+	falling_visual = "nc_terrain:dirt",
 	drawtype = "plantlike_rooted",
 	tiles = {"nc_tree_humus.png"},
-	falling_visual = visdirt,
---	falling_visual = {"nc_tree_humus.png"},
-	special_tiles = {"nc_tree_tree_side.png^[mask:" ..modname.. "_stem_mask.png"},
-	drop = dirt,
-	groups = {grassable = 0, soil = 1, roots = 1, choppy = 2, crumbly = 2}
-}, minetest.registered_items[dirt] or {})
-rootdef.groups.humus = nil
-minetest.register_node(rootname, rootdef)
+	special_tiles = {"(nc_tree_tree_side.png^[colorize:black:64)^[mask:" ..modname.. "_stem_mask.png"},
+	paramtype = "light",
+	groups = {
+		soil = 1,
+		crumbly = 1
+	},
+	after_dig_node = function(pos)
+		pos.y = pos.y + 1
+		nodecore.item_eject(pos, "nc_tree:stick", 0, 1, {x = 0, y = 2, z = 0})
+	end,
+	drop_in_place = "nc_terrain:dirt_loose",
+	silktouch = false,
+	sounds = nodecore.sounds("nc_terrain_crunchy"),
+	mapcolor = minetest.registered_nodes["nc_terrain:dirt"].mapcolor,
+})
+
 ------------------------------------------------------------------------
 local peppers = "(nc_flora_sedge_color.png^[colorize:lime:128)^[mask:nc_flora_flower_5_top.png"
 local shrubbery = modname.. "_shrub.png^" ..modname.. "_thornbriar.png"
@@ -80,9 +93,9 @@ for i = 0,3 do
 	minetest.register_abm({
 		label = "Atomatillo Growth",
 		nodenames = {modname .. ":atomatillo_bush_" ..i},
-		neighbors = {"group:water", "group:moist"},
-		interval = 300,
-		chance = 12,
+--		neighbors = {"group:water", "group:moist"},
+		interval = 300, --300
+		chance = 12, --12
 		action = function(pos)
 			local above = {x = pos.x, y = pos.y + 1, z = pos.z}
 			local grow = i+1
@@ -115,6 +128,22 @@ minetest.register_abm({
 	end,
 })
 ------------------------------------------------------------------------
+minetest.register_abm({
+	label = "Blastbramble Rerooting",
+	nodenames = {"group:bush"},
+	neighbors = {"group:soil"},
+	interval = 60, --60
+	chance = 20, --20
+	action = function(pos)
+		local up = {x = pos.x, y = pos.y + 1, z = pos.z}
+		local down = {x = pos.x, y = pos.y - 1; z = pos.z}
+		local dname = minetest.get_node(down).name
+			if minetest.get_item_group(dname, "soil") > 0 then
+				minetest.set_node(pos,{name = modname .. ":atomatillo_bush_0"})
+				minetest.set_node(down,{name = modname .. ":atomatillo_root"})
+		end
+	end,
+})
 -- ================================================================== --
 -- ================================================================== --
 local stemroot = {
@@ -192,35 +221,6 @@ minetest.override_item(modname.. ":atomatillo_bush_3",{
 -- ================================================================== --
 -- ================================================================== --
 -- ================================================================== --
-local epname = modname .. ":atomatillo_root"
-local function soilboost(pos, name)
-	local def = minetest.registered_items[name]
-	local soil = def.groups.soil or 0
-	if soil > 2 then
-		nodecore.soaking_abm_push(pos, "atomatillo", (soil - 2) * 500)
-		nodecore.soaking_particles(pos, (soil - 2) * 10,
-			0.5, .45, modname .. ":atomatillo")
-	end
-end
-nodecore.register_item_entity_step(function(self)
-		if self.itemstring ~= modname .. ":atomatillo" then
-			return
-		end
-
-		local pos = self.object:get_pos()
-		if not pos then return end
-
-		local curnode = minetest.get_node(pos)
-		if minetest.get_item_group(curnode.name, "dirt_loose") < 1 then
-			return
-		end
-
-		nodecore.set_loud(pos, {name = epname})
-		self.itemstring = ""
-		self.object:remove()
-
-		soilboost(pos, curnode.name)
-	end)
 nodecore.register_craft({
 		label = "atomatillo planting",
 		action = "stackapply",
@@ -229,34 +229,44 @@ nodecore.register_craft({
 		indexkeys = {modname .. ":atomatillo"},
 		nodes = {{match = modname .. ":atomatillo", replace = modname.. ":atomatillo_root"}},
 		after = function(pos, data)
-			soilboost(pos, data.wield:get_name())
+					local curnode = minetest.get_node(pos)
+		if minetest.get_item_group(curnode.name, "dirt_loose") < 1 then
+			return
+		end
+
+		nodecore.set_loud(pos, {name = modname.. ":atomatillo_root"})
+		self.itemstring = ""
+		self.object:remove()
 		end
 	})
 -- ================================================================== --
 -- ================================================================== --
+-- Make the atomatillos spontaneously combust
+------------------------------------------------------------------------
 nodecore.register_aism({
-		label = "atomatillo ignition",
-		interval = 10,
-		chance = 2,
-		arealoaded = 2,
-		itemnames = {modname .. ":atomatillo"},
-		action = function(stack, data)
-			if data.toteslot then return end
-			if data.player and data.list then
-				local inv = data.player:get_inventory()
-				for i = 1, inv:get_size(data.list) do
-					local item = inv:get_stack(data.list, i):get_name()
-					if minetest.get_item_group(item, "moist") > 0 then return end
-				end
+	label = "atomatillo ignition",
+	interval = 10,
+	chance = 2,
+	arealoaded = 2,
+	itemnames = {modname .. ":atomatillo"},
+	action = function(stack, data)
+		if data.toteslot then return end
+		if data.player and data.list then
+			local inv = data.player:get_inventory()
+			for i = 1, inv:get_size(data.list) do
+				local item = inv:get_stack(data.list, i):get_name()
+				if minetest.get_item_group(item, "moist") > 0 then return end
 			end
-			if #nodecore.find_nodes_around(data.pos, "group:moist", 2) > 0 then return end
-			nodecore.sound_play("nc_api_toolbreak", {pos = data.pos})
-			nodecore.firestick_spark_ignite(data.pos,true)
-			local taken = stack:take_item(1)
-			taken:set_name("nc_fire:fire")
---			if data.inv then taken = data.inv:add_item("main", taken) end
-			if not taken:is_empty() then nodecore.item_eject(data.pos, taken) end
-			return stack
 		end
-	})
-	
+		if #nodecore.find_nodes_around(data.pos, "group:moist", 2) > 0 then return end
+		nodecore.sound_play("nc_api_toolbreak", {pos = data.pos})
+		nodecore.firestick_spark_ignite(data.pos,true)
+		local taken = stack:take_item(1)
+		taken:set_name("nc_fire:fire")
+--		if data.inv then taken = data.inv:add_item("main", taken) end
+		if not taken:is_empty() then nodecore.item_eject(data.pos, taken) end
+		return stack
+	end
+})
+-- ================================================================== --
+-- ================================================================== --
