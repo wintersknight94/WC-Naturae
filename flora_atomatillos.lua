@@ -75,11 +75,11 @@ for i = 0,3 do
 		silktouch = false,
 		groups = {
 			snappy = 1,
-			flora = 1,
+--			flora = 1,
 			flammable = 3,
 			attached_node = 1,
-			green = 1,
-			leafy = 1,
+--			green = 1,
+--			leafy = 1,
 			bush = 1,
 			damage_touch = 1,
 		},
@@ -93,9 +93,9 @@ for i = 0,3 do
 	minetest.register_abm({
 		label = "Atomatillo Growth",
 		nodenames = {modname .. ":atomatillo_bush_" ..i},
---		neighbors = {"group:water", "group:moist"},
-		interval = 300, --300
-		chance = 12, --12
+		neighbors = {"group:water", "group:moist"},
+		interval = 120,
+		chance = 20,
 		action = function(pos)
 			local above = {x = pos.x, y = pos.y + 1, z = pos.z}
 			local grow = i+1
@@ -117,7 +117,7 @@ minetest.register_abm({
 	label = "Blastbramble Regrowing",
 	nodenames = {modname .. ":atomatillo_root"},
 	neighbors = {"group:soil", "group:moist", "group:water"},
-	interval = 120, --120
+	interval = 60, --120
 	chance = 20,
 	action = function(pos)
 		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
@@ -203,11 +203,11 @@ minetest.override_item(modname.. ":atomatillo_bush_3",{
 	},
 	groups = {
 			snappy = 1,
-			flora = 1,
+--			flora = 1,
 			flammable = 3,
 			attached_node = 1,
-			green = 1,
-			leafy = 1,
+--			green = 1,
+--			leafy = 1,
 			bush = 1,
 			lux_emit = 1
 		},
