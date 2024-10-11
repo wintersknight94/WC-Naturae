@@ -47,7 +47,8 @@ minetest.register_node(modname .. ":atomatillo_root", {
 	paramtype = "light",
 	groups = {
 		soil = 1,
-		crumbly = 1
+		crumbly = 1,
+		pepperroot = 1
 	},
 	after_dig_node = function(pos)
 		pos.y = pos.y + 1
@@ -82,6 +83,7 @@ for i = 0,3 do
 --			leafy = 1,
 			bush = 1,
 			damage_touch = 1,
+			lux_emit = i,
 		},
 		damage_per_second = 1,
 		move_resistance = 2,
@@ -99,9 +101,6 @@ for i = 0,3 do
 		action = function(pos)
 			local above = {x = pos.x, y = pos.y + 1, z = pos.z}
 			local grow = i+1
---			if not nodecore.buildable_to(above) then
---				return
---			end
 			if i == 3 then 
 				return 
 			end
@@ -138,6 +137,9 @@ minetest.register_abm({
 		local up = {x = pos.x, y = pos.y + 1, z = pos.z}
 		local down = {x = pos.x, y = pos.y - 1; z = pos.z}
 		local dname = minetest.get_node(down).name
+			if dname == modname.. ":atomatillo_root"
+				return
+			end
 			if minetest.get_item_group(dname, "soil") > 0 then
 				minetest.set_node(pos,{name = modname .. ":atomatillo_bush_0"})
 				minetest.set_node(down,{name = modname .. ":atomatillo_root"})
@@ -209,7 +211,7 @@ minetest.override_item(modname.. ":atomatillo_bush_3",{
 --			green = 1,
 --			leafy = 1,
 			bush = 1,
-			lux_emit = 1
+			lux_emit = 3
 		},
 	on_dig = function(pos)
 			local y = math.random(6)
