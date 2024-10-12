@@ -96,8 +96,8 @@ for i = 0,3 do
 		label = "Atomatillo Growth",
 		nodenames = {modname .. ":atomatillo_bush_" ..i},
 		neighbors = {"group:water", "group:moist"},
-		interval = 120,
-		chance = 20,
+		interval = 120, --120
+		chance = 20, --20
 		action = function(pos)
 			local above = {x = pos.x, y = pos.y + 1, z = pos.z}
 			local grow = i+1
@@ -116,7 +116,7 @@ minetest.register_abm({
 	label = "Blastbramble Regrowing",
 	nodenames = {modname .. ":atomatillo_root"},
 	neighbors = {"group:soil", "group:moist", "group:water"},
-	interval = 60, --120
+	interval = 60, --60
 	chance = 20,
 	action = function(pos)
 		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
@@ -127,25 +127,29 @@ minetest.register_abm({
 	end,
 })
 ------------------------------------------------------------------------
+--[[
 minetest.register_abm({
 	label = "Blastbramble Rerooting",
 	nodenames = {"group:bush"},
 	neighbors = {"group:soil"},
-	interval = 60, --60
-	chance = 20, --20
+	interval = 60, --120
+	chance = 20, --2
 	action = function(pos)
 		local up = {x = pos.x, y = pos.y + 1, z = pos.z}
 		local down = {x = pos.x, y = pos.y - 1; z = pos.z}
 		local dname = minetest.get_node(down).name
-			if dname == modname.. ":atomatillo_root"
-				return
+--		  minetest.chat_send_all("starting up")
+			if dname == modname.. ":atomatillo_root" then
+				return --minetest.chat_send_all("already rooted")
 			end
 			if minetest.get_item_group(dname, "soil") > 0 then
-				minetest.set_node(pos,{name = modname .. ":atomatillo_bush_0"})
+--				minetest.set_node(pos,{name = modname .. ":atomatillo_bush_0"})
 				minetest.set_node(down,{name = modname .. ":atomatillo_root"})
+--				minetest.chat_send_all("grew a root")
 		end
 	end,
 })
+]]
 -- ================================================================== --
 -- ================================================================== --
 local stemroot = {
